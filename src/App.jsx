@@ -64,7 +64,7 @@ export default function App() {
             <h1 className="display" style={{ fontSize: "clamp(46px,7vw,96px)", marginBottom: 12 }}>
               <span style={{ display: "block", animation: "textUp 1s ease .4s both" }}>The Art &</span>
               <span style={{ display: "block", animation: "textUp 1s ease .55s both" }}>Science of</span>
-              <span style={{ display: "block", fontStyle: "italic", fontWeight: 400, background: "linear-gradient(135deg, var(--gold) 0%, var(--gold-lt) 40%, var(--gold) 80%)", backgroundSize: "200% 100%", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", animation: "textUp 1s ease .7s both" }}>Beautiful Skin</span>
+              <span style={{ display: "block", fontStyle: "italic", fontWeight: 400, background: "linear-gradient(135deg, #8B6F4E 0%, var(--gold) 40%, #8B6F4E 80%)", backgroundSize: "200% 100%", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", animation: "textUp 1s ease .7s both" }}>Beautiful Skin</span>
             </h1>
             <div style={{ display: "flex", alignItems: "center", gap: 16, margin: "28px 0 16px", animation: "textUp 1s ease .85s both" }}>
               <div style={{ width: 72, height: 1.5, background: "linear-gradient(90deg, var(--gold), transparent)", transformOrigin: "left", animation: "lineDraw .8s ease 1.2s both" }} />
@@ -85,17 +85,15 @@ export default function App() {
               <button className="btn btn-o" onClick={() => go("services")}>Our Expertise</button>
             </div>
           </div>
-          <div className="hero-vis" style={{ flex: "0 0 36%", position: "relative", animation: "fadeIn 1.5s ease .5s both" }}>
-            <div style={{ aspectRatio: "3/4", borderRadius: 28, position: "relative", overflow: "hidden", border: "1px solid rgba(184,149,106,.08)" }}>
+          <div className="hero-vis" style={{ flex: "0 0 38%", position: "relative", animation: "fadeIn 1.5s ease .5s both" }}>
+            {/* Decorative background panel */}
+            <div style={{ position: "absolute", top: 40, right: -20, bottom: -20, left: 20, borderRadius: 28, background: "linear-gradient(160deg, var(--cream), rgba(184,149,106,.12))", border: "1px solid rgba(184,149,106,.08)" }} />
+            <div style={{ aspectRatio: "3/4", borderRadius: 28, position: "relative", overflow: "hidden", border: "1px solid rgba(184,149,106,.1)", boxShadow: "0 32px 80px rgba(23,54,58,.12)" }}>
               <img src="/images/hero-doctor.png" alt="Trident Dermatology physician consulting with patient" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
-              <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "64px 32px 32px", background: "linear-gradient(to top, rgba(23,54,58,.82), rgba(23,54,58,.3) 50%, transparent)" }}>
-                <div style={{ color: "rgba(255,255,255,.4)", fontSize: 9, letterSpacing: 5, textTransform: "uppercase", marginBottom: 8 }}>Trident Dermatology</div>
+              <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "80px 32px 28px", background: "linear-gradient(to top, rgba(23,54,58,.85), rgba(23,54,58,.3) 50%, transparent)" }}>
+                <div style={{ color: "rgba(255,255,255,.35)", fontSize: 9, letterSpacing: 5, textTransform: "uppercase", marginBottom: 6 }}>Trident Dermatology</div>
                 <div style={{ color: "white", fontFamily: "'Cormorant Garamond',serif", fontSize: 22, fontWeight: 300 }}>North Charleston, SC</div>
               </div>
-            </div>
-            <div style={{ position: "absolute", top: -18, right: -18, width: 88, height: 88, borderRadius: "50%", background: "var(--bg)", boxShadow: "0 14px 44px rgba(23,54,58,.07)", border: "1px solid rgba(184,149,106,.1)", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", animation: "scaleUp .6s ease 2s both" }}>
-              <div style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: 30, fontWeight: 600, color: "var(--teal)", lineHeight: 1 }}>5</div>
-              <div style={{ fontSize: 7.5, letterSpacing: 2, textTransform: "uppercase", color: "var(--stone)", fontWeight: 600, lineHeight: 1.3, textAlign: "center" }}>Board<br/>Certified</div>
             </div>
           </div>
         </div>
@@ -104,6 +102,16 @@ export default function App() {
           <div style={{ width: 1, height: 44, overflow: "hidden" }}><div style={{ width: 1, height: 44, background: "var(--gold)", animation: "float 2s ease-in-out infinite" }} /></div>
         </div>
       </section>
+
+      {/* ═══ TRUST BAR ═══ */}
+      <div style={{ padding: "28px clamp(20px,5vw,72px)", background: "var(--teal)", display: "flex", justifyContent: "center", gap: "clamp(24px,5vw,72px)", flexWrap: "wrap", animation: "fadeIn 1s ease 1.5s both" }}>
+        {[["5","Board-Certified Physicians"],["8","Expert Providers"],["99%","Mohs Cure Rate"],["20+","Years Experience"]].map(([v,l],i) => (
+          <div key={i} style={{ display: "flex", alignItems: "center", gap: 14 }}>
+            <span style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: 32, fontWeight: 300, color: "var(--gold-lt)", lineHeight: 1 }}>{v}</span>
+            <span style={{ fontSize: 10, letterSpacing: 2, textTransform: "uppercase", color: "rgba(255,255,255,.5)", fontWeight: 500, lineHeight: 1.4 }}>{l}</span>
+          </div>
+        ))}
+      </div>
 
       {/* ═══ MARQUEE ═══ */}
       <div style={{ padding: "32px 0", borderTop: "1px solid rgba(184,149,106,.06)", borderBottom: "1px solid rgba(184,149,106,.06)", overflow: "hidden", background: "rgba(237,229,216,.18)" }}>
@@ -162,23 +170,23 @@ export default function App() {
           <div style={{ fontSize: 10, letterSpacing: 5, textTransform: "uppercase", color: "var(--gold)", fontWeight: 600, marginBottom: 16 }}>What We Treat</div>
           <h2 className="display" style={{ fontSize: "clamp(36px,5vw,60px)", marginBottom: 16 }}>Three Pillars of <em style={{ fontStyle: "italic", color: "var(--gold)" }}>Exceptional</em> Care</h2>
         </div>
-        <ServicePanel num="01" title="Medical Dermatology" align="left" vis={svcVis} delay={0.1} dark desc="Comprehensive diagnosis and treatment of conditions affecting the skin, hair, and nails — from acne and eczema to complex autoimmune disorders." items={["Acne & Rosacea","Psoriasis & Eczema","Skin Cancer Screening","Mole Evaluation","Hair & Nail Disorders"]} />
-        <ServicePanel num="02" title="Cosmetic Dermatology" align="right" vis={svcVis} delay={0.25} desc="Refined aesthetic treatments that enhance your natural beauty with precision, subtlety, and clinical artistry." items={["Botox & Dysport","Dermal Fillers","Chemical Peels","Laser Treatments","Microneedling"]} />
-        <ServicePanel num="03" title="Mohs Micrographic Surgery" align="left" vis={svcVis} delay={0.4} dark desc="The gold standard in skin cancer removal — tissue-sparing precision with the highest cure rates in modern dermatologic surgery." items={["Skin Cancer Removal","Tissue-Sparing Technique","Same-Day Results","Reconstructive Options","99% Cure Rate"]} />
+        <ServicePanel num="01" title="Medical Dermatology" align="left" vis={svcVis} delay={0.1} dark image="/images/svc-medical.png" desc="Comprehensive diagnosis and treatment of conditions affecting the skin, hair, and nails — from acne and eczema to complex autoimmune disorders." items={["Acne & Rosacea","Psoriasis & Eczema","Skin Cancer Screening","Mole Evaluation","Hair & Nail Disorders"]} />
+        <ServicePanel num="02" title="Cosmetic Dermatology" align="right" vis={svcVis} delay={0.25} image="/images/svc-cosmetic.png" desc="Refined aesthetic treatments that enhance your natural beauty with precision, subtlety, and clinical artistry." items={["Botox & Dysport","Dermal Fillers","Chemical Peels","Laser Treatments","Microneedling"]} />
+        <ServicePanel num="03" title="Mohs Micrographic Surgery" align="left" vis={svcVis} delay={0.4} dark image="/images/svc-mohs.png" desc="The gold standard in skin cancer removal — tissue-sparing precision with the highest cure rates in modern dermatologic surgery." items={["Skin Cancer Removal","Tissue-Sparing Technique","Same-Day Results","Reconstructive Options","99% Cure Rate"]} />
       </section>
 
       {/* ═══ BY THE NUMBERS ═══ */}
-      <section ref={numRef} style={{ margin: "40px clamp(16px,3vw,48px)", borderRadius: 28, padding: "clamp(56px,8vw,100px) clamp(24px,5vw,72px)", background: "linear-gradient(160deg, var(--cream), rgba(184,149,106,.06))", border: "1px solid rgba(184,149,106,.08)", position: "relative", overflow: "hidden" }}>
-        <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", opacity: .02 }}><AnimatedTrident size={400} delay={0} /></div>
+      <section ref={numRef} style={{ margin: "40px clamp(16px,3vw,48px)", borderRadius: 28, padding: "clamp(56px,8vw,100px) clamp(24px,5vw,72px)", background: "linear-gradient(160deg, var(--teal), #1A4848, var(--teal2))", position: "relative", overflow: "hidden" }}>
+        <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", opacity: .04 }}><AnimatedTrident size={400} delay={0} /></div>
         <div style={{ textAlign: "center", marginBottom: 56, position: "relative", zIndex: 2 }}>
-          <div style={{ fontSize: 10, letterSpacing: 5, textTransform: "uppercase", color: "var(--gold)", fontWeight: 600, marginBottom: 12 }}>By The Numbers</div>
-          <h2 className="display" style={{ fontSize: "clamp(30px,4vw,44px)" }}>Trusted by the <em style={{ fontStyle: "italic", color: "var(--gold)" }}>Lowcountry</em></h2>
+          <div style={{ fontSize: 10, letterSpacing: 5, textTransform: "uppercase", color: "var(--gold-lt)", fontWeight: 600, marginBottom: 12 }}>By The Numbers</div>
+          <h2 className="display" style={{ fontSize: "clamp(30px,4vw,44px)", color: "white" }}>Trusted by the <em style={{ fontStyle: "italic", color: "var(--gold-lt)" }}>Lowcountry</em></h2>
         </div>
         <div className="num-grid" style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 32, position: "relative", zIndex: 2 }}>
           {[{ val: c5, label: "Board-Certified Physicians", suffix: "" },{ val: c8, label: "Total Providers on Staff", suffix: "" },{ val: c99, label: "Mohs Surgery Cure Rate", suffix: "%" },{ val: cYrs, label: "Years Combined Experience", suffix: "+" }].map((s, i) => (
             <div key={i} style={{ textAlign: "center", padding: "24px 16px" }}>
-              <div style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "clamp(48px,6vw,72px)", fontWeight: 300, color: "var(--teal)", lineHeight: 1 }}>{s.val}{s.suffix}</div>
-              <div style={{ fontSize: 11, letterSpacing: 2, textTransform: "uppercase", color: "var(--stone)", fontWeight: 500, marginTop: 8, lineHeight: 1.5 }}>{s.label}</div>
+              <div style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "clamp(48px,6vw,72px)", fontWeight: 300, color: "white", lineHeight: 1 }}>{s.val}{s.suffix}</div>
+              <div style={{ fontSize: 11, letterSpacing: 2, textTransform: "uppercase", color: "rgba(255,255,255,.45)", fontWeight: 500, marginTop: 8, lineHeight: 1.5 }}>{s.label}</div>
             </div>
           ))}
         </div>
