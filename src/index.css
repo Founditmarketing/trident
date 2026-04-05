@@ -310,7 +310,6 @@ button { cursor: pointer; font-family: inherit; }
   .hero-split { flex-direction: column !important; }
   .hero-vis { display: none !important; }
   .svc-panel { flex-direction: column !important; }
-  .svc-panel > div:first-child { flex: 1 1 100% !important; width: 100% !important; aspect-ratio: 16/9 !important; }
   .about-split { flex-direction: column !important; }
   .prov-grid { grid-template-columns: repeat(2, 1fr) !important; }
   .pa-grid { grid-template-columns: repeat(2, 1fr) !important; }
