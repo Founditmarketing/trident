@@ -39,7 +39,7 @@ export default function App() {
         </div>
         <div className="d-nav" style={{ display: "flex", gap: 40, alignItems: "center" }}>
           {["About","Services","Providers","Reviews","Location"].map(s => <button key={s} className="lnk" onClick={() => go(s.toLowerCase())}>{s}</button>)}
-          <a href="tel:8437973960" className="btn btn-p" style={{ padding: "11px 28px", fontSize: 11 }}>Book a Visit</a>
+          <a href="tel:8437973960" className="btn btn-p" style={{ padding: "11px 28px", fontSize: 11 }}>(843) 797-3960</a>
         </div>
         <button className="m-tog" onClick={() => setMenuOpen(!menuOpen)} style={{ display: "none", flexDirection: "column", gap: 5, background: "none", border: "none", cursor: "pointer", padding: 8, zIndex: 1001 }}>
           {[0,1,2].map(i => <span key={i} style={{ width: 22, height: 1.5, background: "var(--teal)", borderRadius: 2, transition: "all .3s", transform: menuOpen ? (i===0?"rotate(45deg) translate(4.5px,4.5px)":i===2?"rotate(-45deg) translate(4.5px,-4.5px)":"scaleX(0)") : "none", opacity: menuOpen&&i===1?0:1 }} />)}
@@ -58,7 +58,7 @@ export default function App() {
           <div style={{ flex: "1 1 58%" }}>
             <div style={{ display: "inline-flex", alignItems: "center", gap: 14, marginBottom: 44, animation: "textUp .8s ease .2s both" }}>
               <div style={{ width: 8, height: 8, borderRadius: "50%", background: "var(--gold)", animation: "dotPulse 2.5s ease-in-out infinite" }} />
-              <span style={{ fontSize: 10, letterSpacing: 5, textTransform: "uppercase", fontWeight: 600, color: "var(--stone)" }}>North Charleston, South Carolina</span>
+              <span style={{ fontSize: 10, letterSpacing: 5, textTransform: "uppercase", fontWeight: 600, color: "var(--charcoal)" }}>North Charleston, South Carolina</span>
               <div style={{ width: 48, height: 1, background: "var(--taupe)" }} />
             </div>
             <h1 className="display" style={{ fontSize: "clamp(46px,7vw,96px)", marginBottom: 12 }}>
@@ -66,21 +66,28 @@ export default function App() {
               <span style={{ display: "block", animation: "textUp 1s ease .55s both" }}>Science of</span>
               <span style={{ display: "block", fontStyle: "italic", fontWeight: 400, background: "linear-gradient(135deg, var(--gold) 0%, var(--gold-lt) 40%, var(--gold) 80%)", backgroundSize: "200% 100%", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", animation: "textUp 1s ease .7s both" }}>Beautiful Skin</span>
             </h1>
-            <div style={{ display: "flex", alignItems: "center", gap: 16, margin: "28px 0 32px", animation: "textUp 1s ease .85s both" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 16, margin: "28px 0 16px", animation: "textUp 1s ease .85s both" }}>
               <div style={{ width: 72, height: 1.5, background: "linear-gradient(90deg, var(--gold), transparent)", transformOrigin: "left", animation: "lineDraw .8s ease 1.2s both" }} />
-              <span style={{ fontSize: 10, letterSpacing: 4, textTransform: "uppercase", color: "var(--mist)", fontWeight: 500 }}>Est. North Charleston</span>
+              <span style={{ fontSize: 10, letterSpacing: 4, textTransform: "uppercase", color: "var(--stone)", fontWeight: 500 }}>Est. North Charleston</span>
             </div>
-            <p style={{ fontSize: "clamp(15px,1.6vw,18px)", lineHeight: 1.85, color: "var(--stone)", maxWidth: 480, fontWeight: 300, marginBottom: 48, animation: "textUp 1s ease 1s both" }}>
+            {/* Google Reviews social proof badge */}
+            <a href="https://www.google.com/maps/place/Trident+Dermatology/" target="_blank" rel="noopener noreferrer" style={{ display: "inline-flex", alignItems: "center", gap: 10, padding: "10px 20px", borderRadius: 40, background: "rgba(255,255,255,.6)", backdropFilter: "blur(12px)", border: "1px solid rgba(184,149,106,.1)", marginBottom: 28, animation: "textUp 1s ease .9s both", transition: "all .4s ease" }} onMouseEnter={e=>{e.currentTarget.style.background="rgba(255,255,255,.9)";e.currentTarget.style.borderColor="rgba(184,149,106,.25)"}} onMouseLeave={e=>{e.currentTarget.style.background="rgba(255,255,255,.6)";e.currentTarget.style.borderColor="rgba(184,149,106,.1)"}}>
+              <div style={{ display: "flex", gap: 2 }}>{[...Array(5)].map((_,i)=><svg key={i} width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>)}</div>
+              <span style={{ fontSize: 13, fontWeight: 600, color: "var(--teal)" }}>4.9</span>
+              <span style={{ fontSize: 12, color: "var(--stone)", fontWeight: 400 }}>on Google Reviews</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--stone)" strokeWidth="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+            </a>
+            <p style={{ fontSize: "clamp(15px,1.6vw,18px)", lineHeight: 1.85, color: "var(--stone)", maxWidth: 480, fontWeight: 300, marginBottom: 40, animation: "textUp 1s ease 1s both" }}>
               Five board-certified dermatologists and a dedicated team delivering the Lowcountry's most comprehensive medical, cosmetic, and surgical skin care.
             </p>
             <div style={{ display: "flex", gap: 16, flexWrap: "wrap", animation: "textUp 1s ease 1.15s both" }}>
-              <a href="tel:8437973960" className="btn btn-p">Schedule a Visit <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+              <a href="tel:8437973960" className="btn btn-p">Call to Schedule <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></a>
               <button className="btn btn-o" onClick={() => go("services")}>Our Expertise</button>
             </div>
           </div>
           <div className="hero-vis" style={{ flex: "0 0 36%", position: "relative", animation: "fadeIn 1.5s ease .5s both" }}>
             <div style={{ aspectRatio: "3/4", borderRadius: 28, position: "relative", overflow: "hidden", border: "1px solid rgba(184,149,106,.08)" }}>
-              <img src="/images/hero-clinic.png" alt="Trident Dermatology modern clinic interior" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+              <img src="/images/hero-doctor.png" alt="Trident Dermatology physician consulting with patient" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
               <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "64px 32px 32px", background: "linear-gradient(to top, rgba(23,54,58,.82), rgba(23,54,58,.3) 50%, transparent)" }}>
                 <div style={{ color: "rgba(255,255,255,.4)", fontSize: 9, letterSpacing: 5, textTransform: "uppercase", marginBottom: 8 }}>Trident Dermatology</div>
                 <div style={{ color: "white", fontFamily: "'Cormorant Garamond',serif", fontSize: 22, fontWeight: 300 }}>North Charleston, SC</div>
@@ -93,7 +100,7 @@ export default function App() {
           </div>
         </div>
         <div style={{ position: "absolute", bottom: 32, left: "50%", transform: "translateX(-50%)", display: "flex", flexDirection: "column", alignItems: "center", gap: 10, opacity: Math.max(0, 1 - sy / 300) }}>
-          <span style={{ fontSize: 8, letterSpacing: 5, textTransform: "uppercase", color: "var(--mist)", fontWeight: 600 }}>Scroll</span>
+          <span style={{ fontSize: 8, letterSpacing: 5, textTransform: "uppercase", color: "var(--stone)", fontWeight: 600 }}>Scroll</span>
           <div style={{ width: 1, height: 44, overflow: "hidden" }}><div style={{ width: 1, height: 44, background: "var(--gold)", animation: "float 2s ease-in-out infinite" }} /></div>
         </div>
       </section>
