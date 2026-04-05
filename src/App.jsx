@@ -24,7 +24,7 @@ export default function App() {
   const cYrs = useCountUp(20, 2000, numVis);
 
   return (
-    <div style={{ background: "var(--bg)", color: "var(--ink)", fontFamily: "'DM Sans',sans-serif", overflowX: "hidden" }}>
+    <div style={{ background: "var(--bg)", color: "var(--ink)", fontFamily: "'DM Sans',sans-serif" }}>
       <div className="grain" />
 
       {/* ═══ NAV ═══ */}
@@ -309,12 +309,18 @@ export default function App() {
               </div>
               <p style={{ fontSize: 14, lineHeight: 1.75, maxWidth: 280, fontWeight: 300 }}>Comprehensive dermatology for the Lowcountry — clinical excellence meets compassionate care.</p>
             </div>
-            {[{t:"Services",l:["Medical Dermatology","Cosmetic Treatments","Mohs Surgery","Skin Cancer Care","Botox & Fillers"]},{t:"Resources",l:["Patient Portal","New Patients","Pay Bill","Blog","Contact"]}].map((c,ci) =>
-              <div key={ci}><div style={{ fontSize: 9, letterSpacing: 4, textTransform: "uppercase", color: "var(--gold-lt)", fontWeight: 600, marginBottom: 24 }}>{c.t}</div>
-                {c.l.map((l,li) => <div key={li} style={{ fontSize: 14, marginBottom: 14, fontWeight: 300, cursor: "pointer", transition: "color .3s" }}
-                  onMouseEnter={e=>e.target.style.color="white"} onMouseLeave={e=>e.target.style.color="rgba(255,255,255,.55)"}>{l}</div>)}
-              </div>
-            )}
+            <div>
+              <div style={{ fontSize: 9, letterSpacing: 4, textTransform: "uppercase", color: "var(--gold-lt)", fontWeight: 600, marginBottom: 24 }}>Services</div>
+              {[["Medical Dermatology","https://www.tridentderm.com/medical/"],["Cosmetic Treatments","https://www.tridentderm.com/cosmetic/"],["Mohs Surgery","https://www.tridentderm.com/mohs-surgery/"],["Skin Cancer Care","https://www.tridentderm.com/skin-cancer/"],["Botox & Fillers","https://www.tridentderm.com/botox/"]].map(([l,h],li) =>
+                <a key={li} href={h} style={{ display: "block", fontSize: 14, marginBottom: 14, fontWeight: 300, transition: "color .3s", color: "rgba(255,255,255,.55)" }}
+                  onMouseEnter={e=>e.target.style.color="white"} onMouseLeave={e=>e.target.style.color="rgba(255,255,255,.55)"}>{l}</a>)}
+            </div>
+            <div>
+              <div style={{ fontSize: 9, letterSpacing: 4, textTransform: "uppercase", color: "var(--gold-lt)", fontWeight: 600, marginBottom: 24 }}>Resources</div>
+              {[["Patient Portal","https://tridentdermatology.ema.md/ema/Login.action"],["New Patients","https://www.tridentderm.com/new-patients/"],["Pay Bill","https://www.tridentderm.com/pay-bill-online/"],["Blog","https://www.tridentderm.com/blog/"],["Contact","https://www.tridentderm.com/contact-us/"]].map(([l,h],li) =>
+                <a key={li} href={h} target="_blank" rel="noopener noreferrer" style={{ display: "block", fontSize: 14, marginBottom: 14, fontWeight: 300, transition: "color .3s", color: "rgba(255,255,255,.55)" }}
+                  onMouseEnter={e=>e.target.style.color="white"} onMouseLeave={e=>e.target.style.color="rgba(255,255,255,.55)"}>{l}</a>)}
+            </div>
             <div><div style={{ fontSize: 9, letterSpacing: 4, textTransform: "uppercase", color: "var(--gold-lt)", fontWeight: 600, marginBottom: 24 }}>Contact</div>
               <p style={{ fontSize: 14, lineHeight: 1.75, fontWeight: 300, marginBottom: 14 }}>9295 Medical Plaza Dr<br/>Suite A<br/>North Charleston, SC 29406</p>
               <a href="tel:8437973960" style={{ fontSize: 14, color: "var(--gold-lt)", textDecoration: "none", fontWeight: 500 }}>(843) 797-3960</a>

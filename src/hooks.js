@@ -10,18 +10,44 @@ export function useScroll() {
   return y;
 }
 
-export function useReveal(t = 0.1) {
+export function useReveal(t = 0.05) {
   const r = useRef(null);
   const [v, setV] = useState(false);
   useEffect(() => {
     const el = r.current;
     if (!el) return;
-    const o = new IntersectionObserver(([e]) => {
-      if (e.isIntersecting) { setV(true); o.disconnect(); }
-    }, { threshold: t });
-    o.observe(el);
-    return () => o.disconnect();
-  }, [t]);
+
+    // Safety: if IO never fires (scroll container mismatch), use scroll fallback
+    const checkVisible = () => {
+      if (v) return;
+      const rect = el.getBoundingClientRect();
+      const inView = rect.top < window.innerHeight * 1.1 && rect.bottom > 0;
+      if (inView) setV(true);
+    };
+
+    // Primary: IntersectionObserver with generous rootMargin
+    let o;
+    if ('IntersectionObserver' in window) {
+      o = new IntersectionObserver(([e]) => {
+        if (e.isIntersecting) {
+          setV(true);
+          o.disconnect();
+          window.removeEventListener("scroll", checkVisible);
+        }
+      }, { threshold: t, rootMargin: "0px 0px 100px 0px", root: null });
+      o.observe(el);
+    }
+
+    // Fallback: scroll-based check (catches IO misses from overflow containers)
+    window.addEventListener("scroll", checkVisible, { passive: true });
+    // Also check on mount (elements already in view)
+    requestAnimationFrame(checkVisible);
+
+    return () => {
+      if (o) o.disconnect();
+      window.removeEventListener("scroll", checkVisible);
+    };
+  }, [t, v]);
   return [r, v];
 }
 
