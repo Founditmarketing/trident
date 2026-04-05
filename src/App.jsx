@@ -6,6 +6,7 @@ import { GradientMesh, AnimatedTrident, TridentLogo, StarIcon, FaqItem, ServiceP
 export default function App() {
   const sy = useScroll();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [bioOpen, setBioOpen] = useState(null);
   const navOp = Math.min(sy / 280, 1);
   const go = useCallback((id) => { document.getElementById(id)?.scrollIntoView({ behavior: "smooth" }); setMenuOpen(false); }, []);
 
@@ -78,9 +79,8 @@ export default function App() {
             </div>
           </div>
           <div className="hero-vis" style={{ flex: "0 0 36%", position: "relative", animation: "fadeIn 1.5s ease .5s both" }}>
-            <div style={{ aspectRatio: "3/4", borderRadius: 28, position: "relative", overflow: "hidden", background: "linear-gradient(165deg, rgba(237,229,216,.7), rgba(184,149,106,.08) 40%, rgba(23,54,58,.04))", border: "1px solid rgba(184,149,106,.08)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-              <AnimatedTrident size={180} delay={1.4} />
-              {[0,1,2].map(i => <div key={i} style={{ position: "absolute", width: 160+i*80, height: 160+i*80, borderRadius: "50%", border: `1px solid rgba(184,149,106,${.04 - i*.01})`, top: "50%", left: "50%", transform: "translate(-50%,-50%)", animation: `float ${7+i*2}s ease-in-out infinite`, animationDelay: `${i*-1.2}s` }} />)}
+            <div style={{ aspectRatio: "3/4", borderRadius: 28, position: "relative", overflow: "hidden", border: "1px solid rgba(184,149,106,.08)" }}>
+              <img src="/images/hero-clinic.png" alt="Trident Dermatology modern clinic interior" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
               <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "64px 32px 32px", background: "linear-gradient(to top, rgba(23,54,58,.82), rgba(23,54,58,.3) 50%, transparent)" }}>
                 <div style={{ color: "rgba(255,255,255,.4)", fontSize: 9, letterSpacing: 5, textTransform: "uppercase", marginBottom: 8 }}>Trident Dermatology</div>
                 <div style={{ color: "white", fontFamily: "'Cormorant Garamond',serif", fontSize: 22, fontWeight: 300 }}>North Charleston, SC</div>
@@ -189,7 +189,7 @@ export default function App() {
         </div>
         <div className="prov-grid" style={{ display: "grid", gridTemplateColumns: "repeat(5,1fr)", gap: 16, marginBottom: 48 }}>
           {DOCS.map((p, i) => (
-            <div key={i} className="prov-card" style={{ opacity: prVis?1:0, transform: prVis?"none":"translateY(30px)", transition: `all .6s cubic-bezier(.16,1,.3,1) ${i*.08}s` }}>
+            <div key={i} className="prov-card" onClick={() => setBioOpen(bioOpen === i ? null : i)} style={{ opacity: prVis?1:0, transform: prVis?"none":"translateY(30px)", transition: `all .6s cubic-bezier(.16,1,.3,1) ${i*.08}s`, cursor: "pointer" }}>
               <div style={{ width: 100, height: 100, borderRadius: "50%", margin: "0 auto 20px", overflow: "hidden", border: "3px solid rgba(184,149,106,.15)", position: "relative" }}>
                 <img src={p.img} alt={p.name} style={{ width: "100%", height: "100%", objectFit: "cover" }} loading="lazy" />
                 {p.featured && <div style={{ position: "absolute", bottom: 0, right: 0, width: 22, height: 22, borderRadius: "50%", background: "var(--gold)", display: "flex", alignItems: "center", justifyContent: "center", border: "2px solid white" }}>
@@ -198,7 +198,11 @@ export default function App() {
               </div>
               <div style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: 18, fontWeight: 600, color: "var(--teal)", lineHeight: 1.25, marginBottom: 4 }}>{p.name}</div>
               <div style={{ fontSize: 11, color: "var(--gold)", fontWeight: 600, letterSpacing: 1.5, marginBottom: 10 }}>{p.cred}</div>
-              <div style={{ fontSize: 12, color: "var(--stone)", fontWeight: 300, lineHeight: 1.5 }}>{p.focus}</div>
+              <div style={{ fontSize: 12, color: "var(--stone)", fontWeight: 300, lineHeight: 1.5, marginBottom: 8 }}>{p.focus}</div>
+              <div style={{ maxHeight: bioOpen === i ? 200 : 0, overflow: "hidden", transition: "max-height .5s cubic-bezier(.16,1,.3,1)" }}>
+                <p style={{ fontSize: 12, lineHeight: 1.7, color: "var(--stone)", fontWeight: 300, paddingTop: 10, borderTop: "1px solid rgba(184,149,106,.08)" }}>{p.bio}</p>
+              </div>
+              <div style={{ marginTop: 6, fontSize: 10, letterSpacing: 2, textTransform: "uppercase", color: "var(--gold)", fontWeight: 600 }}>{bioOpen === i ? "Close" : "View Bio"}</div>
             </div>
           ))}
         </div>
@@ -222,7 +226,11 @@ export default function App() {
       <section id="reviews" ref={rvRef} style={{ padding: "80px var(--side-pad) var(--section-pad)", maxWidth: 1440, margin: "0 auto" }}>
         <div style={{ textAlign: "center", marginBottom: 64, opacity: rvVis?1:0, transform: rvVis?"none":"translateY(40px)", transition: "all .8s cubic-bezier(.16,1,.3,1)" }}>
           <div className="eyebrow" style={{ justifyContent: "center" }}>Patient Reviews</div>
-          <h2 className="display" style={{ fontSize: "clamp(34px,4.5vw,54px)" }}>What Our <em style={{ fontStyle: "italic", color: "var(--gold)" }}>Patients</em> Say</h2>
+          <h2 className="display" style={{ fontSize: "clamp(34px,4.5vw,54px)", marginBottom: 16 }}>What Our <em style={{ fontStyle: "italic", color: "var(--gold)" }}>Patients</em> Say</h2>
+          <a href="https://www.google.com/maps/place/Trident+Dermatology/@32.8867,-80.0389,15z/" target="_blank" rel="noopener noreferrer" style={{ display: "inline-flex", alignItems: "center", gap: 10, fontSize: 13, color: "var(--stone)", fontWeight: 400, transition: "color .3s" }} onMouseEnter={e=>e.currentTarget.style.color="var(--gold)"} onMouseLeave={e=>e.currentTarget.style.color="var(--stone)"}>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" fill="#4285F4"/><path d="M12 6.8c-2.87 0-5.2 2.33-5.2 5.2s2.33 5.2 5.2 5.2 5.2-2.33 5.2-5.2S14.87 6.8 12 6.8z" fill="white"/><path d="M12 8.4c1.99 0 3.6 1.61 3.6 3.6s-1.61 3.6-3.6 3.6-3.6-1.61-3.6-3.6 1.61-3.6 3.6-3.6z" fill="#4285F4"/></svg>
+            Read all reviews on Google →
+          </a>
         </div>
         <div className="reviews-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 24 }}>
           {REVIEWS.map((r, i) => (
