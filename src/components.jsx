@@ -113,9 +113,9 @@ export function ServicePanel({ num, title, desc, items, align, vis, delay, dark,
         <p style={{ fontSize: 16, lineHeight: 1.85, color: "var(--stone)", fontWeight: 300, maxWidth: 480, marginBottom: 28 }}>{desc}</p>
         <div style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>
           {items.map((it, i) => (
-            <span key={i} style={{ padding: "9px 20px", borderRadius: 40, fontSize: 13, fontWeight: 400, background: "rgba(26,58,58,0.04)", border: "1px solid rgba(26,58,58,0.06)", color: "var(--charcoal)", transition: "all 0.4s cubic-bezier(0.16,1,0.3,1)", cursor: "default" }}
+            <span key={i} style={{ padding: "9px 20px", borderRadius: 40, fontSize: 13, fontWeight: 500, background: "rgba(26,58,58,0.06)", border: "1px solid rgba(26,58,58,0.1)", color: "var(--charcoal)", transition: "all 0.4s cubic-bezier(0.16,1,0.3,1)", cursor: "default" }}
               onMouseEnter={e => { e.target.style.background = accent; e.target.style.color = "white"; e.target.style.borderColor = accent; }}
-              onMouseLeave={e => { e.target.style.background = "rgba(26,58,58,0.04)"; e.target.style.color = "var(--charcoal)"; e.target.style.borderColor = "rgba(26,58,58,0.06)"; }}
+              onMouseLeave={e => { e.target.style.background = "rgba(26,58,58,0.06)"; e.target.style.color = "var(--charcoal)"; e.target.style.borderColor = "rgba(26,58,58,0.1)"; }}
             >{it}</span>
           ))}
         </div>
