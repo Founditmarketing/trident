@@ -81,7 +81,7 @@ export function FaqItem({ q, a }) {
   );
 }
 
-export function ServicePanel({ num, title, desc, items, align, vis, delay, dark, image }) {
+export function ServicePanel({ num, title, desc, items, align, vis, delay, dark, image, video }) {
   const accents = { "01": "#17363A", "02": "#8B6F4E", "03": "#2E6B68" };
   const accent = accents[num] || "var(--teal)";
   return (
@@ -95,7 +95,11 @@ export function ServicePanel({ num, title, desc, items, align, vis, delay, dark,
         flex: "0 0 clamp(200px,24vw,340px)", aspectRatio: "3/4", borderRadius: 24, position: "relative", overflow: "hidden",
         boxShadow: dark ? "0 32px 80px rgba(0,0,0,0.2)" : "0 24px 60px rgba(23,54,58,0.08)",
       }}>
-        <img src={image} alt={title} style={{ width: "100%", height: "100%", objectFit: "cover" }} loading="lazy" />
+        {video ? (
+          <video src={video} poster={image} autoPlay loop muted playsInline style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+        ) : (
+          <img src={image} alt={title} style={{ width: "100%", height: "100%", objectFit: "cover" }} loading="lazy" />
+        )}
         <div style={{ position: "absolute", inset: 0, background: dark ? "linear-gradient(to top, rgba(23,54,58,.65), transparent 60%)" : "linear-gradient(to top, rgba(0,0,0,.35), transparent 50%)" }} />
         <div style={{ position: "absolute", bottom: 20, left: 24, display: "flex", alignItems: "center", gap: 10 }}>
           <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 44, fontWeight: 300, color: "rgba(255,255,255,.25)", lineHeight: 1 }}>{num}</span>

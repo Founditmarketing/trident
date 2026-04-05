@@ -7,6 +7,8 @@ export default function App() {
   const sy = useScroll();
   const [menuOpen, setMenuOpen] = useState(false);
   const [bioOpen, setBioOpen] = useState(null);
+  const [ftOpen, setFtOpen] = useState(null);
+  const [mapActive, setMapActive] = useState(false);
   const navOp = Math.min(sy / 280, 1);
   const go = useCallback((id) => { document.getElementById(id)?.scrollIntoView({ behavior: "smooth" }); setMenuOpen(false); }, []);
 
@@ -49,6 +51,7 @@ export default function App() {
       <header>
 
       {menuOpen && <div className="mob-menu">
+        <a href="tel:8437973960" style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 14, letterSpacing: 3, textTransform: "uppercase", color: "var(--gold)", textDecoration: "none", fontWeight: 600, marginBottom: 16, animation: "textUp .4s ease both" }}>(843) 797-3960</a>
         {["About","Services","Providers","Reviews","Location"].map((s,i) => <button key={s} onClick={() => go(s.toLowerCase())} style={{ background:"none",border:"none",fontFamily:"'Cormorant Garamond',serif",fontSize:42,fontWeight:300,color:"var(--teal)",cursor:"pointer",animation:`textUp .5s ease ${i*.06}s both` }}>{s}</button>)}
         <a href="tel:8437973960" className="btn btn-g" style={{ marginTop:16,animation:"textUp .5s ease .3s both" }}>Call Now</a>
       </div>}
@@ -175,9 +178,9 @@ export default function App() {
           <div style={{ fontSize: 10, letterSpacing: 5, textTransform: "uppercase", color: "var(--gold)", fontWeight: 600, marginBottom: 16 }}>What We Treat</div>
           <h2 className="display" style={{ fontSize: "clamp(36px,5vw,60px)", marginBottom: 16 }}>Three Pillars of <em style={{ fontStyle: "italic", color: "var(--gold)" }}>Exceptional</em> Care</h2>
         </div>
-        <ServicePanel num="01" title="Medical Dermatology" align="left" vis={svcVis} delay={0.1} dark image="/images/svc-medical.png" desc="Comprehensive diagnosis and treatment of conditions affecting the skin, hair, and nails — from acne and eczema to complex autoimmune disorders." items={["Acne & Rosacea","Psoriasis & Eczema","Skin Cancer Screening","Mole Evaluation","Hair & Nail Disorders"]} />
-        <ServicePanel num="02" title="Cosmetic Dermatology" align="right" vis={svcVis} delay={0.25} image="/images/svc-cosmetic.png" desc="Refined aesthetic treatments that enhance your natural beauty with precision, subtlety, and clinical artistry." items={["Botox & Dysport","Dermal Fillers","Chemical Peels","Laser Treatments","Microneedling"]} />
-        <ServicePanel num="03" title="Mohs Micrographic Surgery" align="left" vis={svcVis} delay={0.4} dark image="/images/svc-mohs.png" desc="The gold standard in skin cancer removal — tissue-sparing precision with the highest cure rates in modern dermatologic surgery." items={["Skin Cancer Removal","Tissue-Sparing Technique","Same-Day Results","Reconstructive Options","99% Cure Rate"]} />
+        <ServicePanel num="01" title="Medical Dermatology" align="left" vis={svcVis} delay={0.1} dark image="/images/svc-medical.png" video="/svc-medical.mp4" desc="Comprehensive diagnosis and treatment of conditions affecting the skin, hair, and nails — from acne and eczema to complex autoimmune disorders." items={["Acne & Rosacea","Psoriasis & Eczema","Skin Cancer Screening","Mole Evaluation","Hair & Nail Disorders"]} />
+        <ServicePanel num="02" title="Cosmetic Dermatology" align="right" vis={svcVis} delay={0.25} image="/images/svc-cosmetic.png" video="/svc-cosmetic.mp4" desc="Refined aesthetic treatments that enhance your natural beauty with precision, subtlety, and clinical artistry." items={["Botox & Dysport","Dermal Fillers","Chemical Peels","Laser Treatments","Microneedling"]} />
+        <ServicePanel num="03" title="Mohs Micrographic Surgery" align="left" vis={svcVis} delay={0.4} dark image="/images/svc-mohs.png" video="/svc-mohs.mp4" desc="The gold standard in skin cancer removal — tissue-sparing precision with the highest cure rates in modern dermatologic surgery." items={["Skin Cancer Removal","Tissue-Sparing Technique","Same-Day Results","Reconstructive Options","99% Cure Rate"]} />
       </section>
 
       {/* ═══ BY THE NUMBERS ═══ */}
@@ -318,9 +321,12 @@ export default function App() {
             </div>
             <a href="https://maps.google.com/?q=9295+Medical+Plaza+Dr+North+Charleston+SC" target="_blank" rel="noopener noreferrer" className="btn btn-o">Get Directions <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></a>
           </div>
-          <div style={{ flex: "0 0 46%" }}>
-            <div style={{ aspectRatio: "4/3", borderRadius: 24, overflow: "hidden", border: "1px solid rgba(184,149,106,.08)" }}>
-              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3352.8!2d-80.0389!3d32.8867!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88fe7b4a4b3f4e5d%3A0x1234567890abcdef!2s9295+Medical+Plaza+Dr%2C+North+Charleston%2C+SC+29406!5e0!3m2!1sen!2sus!4v1" width="100%" height="100%" style={{ border: 0, minHeight: 360 }} allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade" title="Trident Dermatology Location"></iframe>
+          <div style={{ flex: "0 0 46%" }} className="map-wrap">
+            <div style={{ aspectRatio: "4/3", borderRadius: 24, overflow: "hidden", border: "1px solid rgba(184,149,106,.08)", position: "relative" }}>
+              {!mapActive && <div onClick={() => setMapActive(true)} style={{ position: "absolute", inset: 0, zIndex: 2, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", background: "rgba(250,248,243,.15)" }}>
+                <span style={{ padding: "10px 24px", borderRadius: 40, background: "rgba(255,255,255,.9)", backdropFilter: "blur(8px)", fontSize: 12, fontWeight: 500, color: "var(--teal)", letterSpacing: 1.5, textTransform: "uppercase", border: "1px solid rgba(184,149,106,.1)" }}>Tap to interact with map</span>
+              </div>}
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3352.8!2d-80.0389!3d32.8867!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88fe7b4a4b3f4e5d%3A0x1234567890abcdef!2s9295+Medical+Plaza+Dr%2C+North+Charleston%2C+SC+29406!5e0!3m2!1sen!2sus!4v1" width="100%" height="100%" style={{ border: 0, minHeight: 360, pointerEvents: mapActive ? "auto" : "none" }} allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade" title="Trident Dermatology Location"></iframe>
             </div>
           </div>
         </div>
@@ -328,7 +334,7 @@ export default function App() {
 
       {/* ═══ FOOTER ═══ */}
       </main>
-      <footer style={{ background: "var(--teal)", color: "rgba(255,255,255,.55)", padding: "80px clamp(20px,5vw,72px) 40px" }}>
+      <footer style={{ background: "var(--teal)", color: "rgba(255,255,255,.65)", padding: "80px clamp(20px,5vw,72px) 40px" }}>
         <div style={{ maxWidth: 1440, margin: "0 auto" }}>
           <div className="ft-grid" style={{ display: "grid", gridTemplateColumns: "2.2fr 1fr 1fr 1fr", gap: "clamp(24px,4vw,56px)", marginBottom: 64 }}>
             <div>
@@ -337,31 +343,37 @@ export default function App() {
                 <div><div style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: 20, fontWeight: 600 }}>Trident</div><div style={{ fontSize: 7, letterSpacing: 4, textTransform: "uppercase", opacity: .35, marginTop: 1 }}>Dermatology</div></div>
               </div>
               <p style={{ fontSize: 14, lineHeight: 1.75, maxWidth: 280, fontWeight: 300, marginBottom: 24 }}>Comprehensive dermatology for the Lowcountry — clinical excellence meets compassionate care.</p>
-              {/* Social Media Links */}
               <div style={{ display: "flex", gap: 12 }}>
-                <a href="https://www.facebook.com/TridentDermatology/" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook" style={{ width: 36, height: 36, borderRadius: "50%", border: "1px solid rgba(255,255,255,.12)", display: "flex", alignItems: "center", justifyContent: "center", transition: "all .3s" }} onMouseEnter={e=>{e.currentTarget.style.borderColor="var(--gold-lt)";e.currentTarget.style.background="rgba(255,255,255,.08)"}} onMouseLeave={e=>{e.currentTarget.style.borderColor="rgba(255,255,255,.12)";e.currentTarget.style.background="transparent"}}>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="rgba(255,255,255,.55)"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+                <a href="https://www.facebook.com/TridentDermatology/" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook" style={{ width: 44, height: 44, borderRadius: "50%", border: "1px solid rgba(255,255,255,.12)", display: "flex", alignItems: "center", justifyContent: "center", transition: "all .3s" }} onMouseEnter={e=>{e.currentTarget.style.borderColor="var(--gold-lt)";e.currentTarget.style.background="rgba(255,255,255,.08)"}} onMouseLeave={e=>{e.currentTarget.style.borderColor="rgba(255,255,255,.12)";e.currentTarget.style.background="transparent"}}>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="rgba(255,255,255,.65)"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
                 </a>
-                <a href="https://www.instagram.com/tridentderm/" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram" style={{ width: 36, height: 36, borderRadius: "50%", border: "1px solid rgba(255,255,255,.12)", display: "flex", alignItems: "center", justifyContent: "center", transition: "all .3s" }} onMouseEnter={e=>{e.currentTarget.style.borderColor="var(--gold-lt)";e.currentTarget.style.background="rgba(255,255,255,.08)"}} onMouseLeave={e=>{e.currentTarget.style.borderColor="rgba(255,255,255,.12)";e.currentTarget.style.background="transparent"}}>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.55)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><path d="M17.5 6.5h.01"/></svg>
+                <a href="https://www.instagram.com/tridentderm/" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram" style={{ width: 44, height: 44, borderRadius: "50%", border: "1px solid rgba(255,255,255,.12)", display: "flex", alignItems: "center", justifyContent: "center", transition: "all .3s" }} onMouseEnter={e=>{e.currentTarget.style.borderColor="var(--gold-lt)";e.currentTarget.style.background="rgba(255,255,255,.08)"}} onMouseLeave={e=>{e.currentTarget.style.borderColor="rgba(255,255,255,.12)";e.currentTarget.style.background="transparent"}}>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.65)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><path d="M17.5 6.5h.01"/></svg>
                 </a>
-                <a href="https://www.google.com/maps/place/Trident+Dermatology/" target="_blank" rel="noopener noreferrer" aria-label="Find us on Google" style={{ width: 36, height: 36, borderRadius: "50%", border: "1px solid rgba(255,255,255,.12)", display: "flex", alignItems: "center", justifyContent: "center", transition: "all .3s" }} onMouseEnter={e=>{e.currentTarget.style.borderColor="var(--gold-lt)";e.currentTarget.style.background="rgba(255,255,255,.08)"}} onMouseLeave={e=>{e.currentTarget.style.borderColor="rgba(255,255,255,.12)";e.currentTarget.style.background="transparent"}}>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="rgba(255,255,255,.55)"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                <a href="https://www.google.com/maps/place/Trident+Dermatology/" target="_blank" rel="noopener noreferrer" aria-label="Find us on Google" style={{ width: 44, height: 44, borderRadius: "50%", border: "1px solid rgba(255,255,255,.12)", display: "flex", alignItems: "center", justifyContent: "center", transition: "all .3s" }} onMouseEnter={e=>{e.currentTarget.style.borderColor="var(--gold-lt)";e.currentTarget.style.background="rgba(255,255,255,.08)"}} onMouseLeave={e=>{e.currentTarget.style.borderColor="rgba(255,255,255,.12)";e.currentTarget.style.background="transparent"}}>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="rgba(255,255,255,.65)"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
                 </a>
               </div>
             </div>
-            <div>
-              <div style={{ fontSize: 9, letterSpacing: 4, textTransform: "uppercase", color: "var(--gold-lt)", fontWeight: 600, marginBottom: 24 }}>Services</div>
-              {[["Medical Dermatology","services"],["Cosmetic Treatments","services"],["Mohs Surgery","services"],["Meet Our Providers","providers"],["Patient Reviews","reviews"]].map(([l,h],li) =>
-                <button key={li} onClick={() => go(h)} style={{ display: "block", fontSize: 14, marginBottom: 14, fontWeight: 300, transition: "color .3s", color: "rgba(255,255,255,.55)", background: "none", border: "none", cursor: "pointer", padding: 0, textAlign: "left", fontFamily: "inherit" }}
-                  onMouseEnter={e=>e.target.style.color="white"} onMouseLeave={e=>e.target.style.color="rgba(255,255,255,.55)"}>{l}</button>)}
-            </div>
-            <div>
-              <div style={{ fontSize: 9, letterSpacing: 4, textTransform: "uppercase", color: "var(--gold-lt)", fontWeight: 600, marginBottom: 24 }}>Resources</div>
-              {[["Patient Portal","https://tridentdermatology.ema.md/ema/Login.action"],["New Patients","https://www.tridentderm.com/new-patients/"],["Pay Bill","https://www.tridentderm.com/pay-bill-online/"],["Blog","https://www.tridentderm.com/blog/"],["Contact","https://www.tridentderm.com/contact-us/"]].map(([l,h],li) =>
-                <a key={li} href={h} target="_blank" rel="noopener noreferrer" style={{ display: "block", fontSize: 14, marginBottom: 14, fontWeight: 300, transition: "color .3s", color: "rgba(255,255,255,.55)" }}
-                  onMouseEnter={e=>e.target.style.color="white"} onMouseLeave={e=>e.target.style.color="rgba(255,255,255,.55)"}>{l}</a>)}
-            </div>
+            {/* Footer columns - accordion on mobile */}
+            {[["Services", [["Medical Dermatology","services"],["Cosmetic Treatments","services"],["Mohs Surgery","services"],["Meet Our Providers","providers"],["Patient Reviews","reviews"]]],
+              ["Resources", [["Patient Portal","https://tridentdermatology.ema.md/ema/Login.action"],["New Patients","https://www.tridentderm.com/new-patients/"],["Pay Bill","https://www.tridentderm.com/pay-bill-online/"],["Blog","https://www.tridentderm.com/blog/"],["Contact","https://www.tridentderm.com/contact-us/"]]]].map(([title, links], ci) => (
+              <div key={ci} className={`ft-col${ftOpen === ci ? ' ft-col-open' : ''}`}>
+                <button className="ft-col-head" onClick={() => setFtOpen(ftOpen === ci ? null : ci)} style={{ fontSize: 9, letterSpacing: 4, textTransform: "uppercase", color: "var(--gold-lt)", fontWeight: 600, marginBottom: 24, background: "none", border: "none", cursor: "pointer", padding: 0, fontFamily: "inherit", display: "flex", alignItems: "center", justifyContent: "space-between", width: "100%" }}>
+                  {title}
+                  <svg className="ft-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--gold-lt)" strokeWidth="2" style={{ transition: "transform .3s", transform: ftOpen === ci ? "rotate(180deg)" : "none" }}><path d="M6 9l6 6 6-6"/></svg>
+                </button>
+                <div className="ft-col-links" style={{ overflow: "hidden" }}>
+                  {links.map(([l,h],li) => (
+                    h.startsWith("http") ? 
+                      <a key={li} href={h} target="_blank" rel="noopener noreferrer" style={{ display: "block", fontSize: 14, padding: "8px 0", fontWeight: 300, transition: "color .3s", color: "rgba(255,255,255,.65)" }}
+                        onMouseEnter={e=>e.target.style.color="white"} onMouseLeave={e=>e.target.style.color="rgba(255,255,255,.65)"}>{l}</a>
+                    : <button key={li} onClick={() => go(h)} style={{ display: "block", fontSize: 14, padding: "8px 0", fontWeight: 300, transition: "color .3s", color: "rgba(255,255,255,.65)", background: "none", border: "none", cursor: "pointer", fontFamily: "inherit", textAlign: "left" }}
+                        onMouseEnter={e=>e.target.style.color="white"} onMouseLeave={e=>e.target.style.color="rgba(255,255,255,.65)"}>{l}</button>
+                  ))}
+                </div>
+              </div>
+            ))}
             <div><div style={{ fontSize: 9, letterSpacing: 4, textTransform: "uppercase", color: "var(--gold-lt)", fontWeight: 600, marginBottom: 24 }}>Contact</div>
               <p style={{ fontSize: 14, lineHeight: 1.75, fontWeight: 300, marginBottom: 14 }}>9295 Medical Plaza Dr<br/>Suite A<br/>North Charleston, SC 29406</p>
               <a href="tel:8437973960" style={{ fontSize: 14, color: "var(--gold-lt)", textDecoration: "none", fontWeight: 500 }}>(843) 797-3960</a>
