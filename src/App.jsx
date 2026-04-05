@@ -44,7 +44,7 @@ export default function App() {
           {["About","Services","Providers","Reviews","Location"].map(s => <button key={s} className="lnk" onClick={() => go(s.toLowerCase())}>{s}</button>)}
           <a href="tel:8437973960" className="btn btn-p" style={{ padding: "11px 28px", fontSize: 11 }}>(843) 797-3960</a>
         </div>
-        <button className="m-tog" onClick={() => setMenuOpen(!menuOpen)} style={{ display: "none", flexDirection: "column", gap: 5, background: "none", border: "none", cursor: "pointer", padding: 8, zIndex: 1001 }}>
+        <button className="m-tog" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? "Close menu" : "Open menu"} aria-expanded={menuOpen} style={{ display: "none", flexDirection: "column", gap: 5, background: "none", border: "none", cursor: "pointer", padding: 12, zIndex: 1001 }}>
           {[0,1,2].map(i => <span key={i} style={{ width: 22, height: 1.5, background: "var(--teal)", borderRadius: 2, transition: "all .3s", transform: menuOpen ? (i===0?"rotate(45deg) translate(4.5px,4.5px)":i===2?"rotate(-45deg) translate(4.5px,-4.5px)":"scaleX(0)") : "none", opacity: menuOpen&&i===1?0:1 }} />)}
         </button>
       </nav>
@@ -55,9 +55,10 @@ export default function App() {
         {["About","Services","Providers","Reviews","Location"].map((s,i) => <button key={s} onClick={() => go(s.toLowerCase())} style={{ background:"none",border:"none",fontFamily:"'Cormorant Garamond',serif",fontSize:42,fontWeight:300,color:"var(--teal)",cursor:"pointer",animation:`textUp .5s ease ${i*.06}s both` }}>{s}</button>)}
         <a href="tel:8437973960" className="btn btn-g" style={{ marginTop:16,animation:"textUp .5s ease .3s both" }}>Call Now</a>
       </div>}
+      </header>
 
       {/* ═══ HERO ═══ */}
-      <section id="hero" style={{ position: "relative", minHeight: "100vh", display: "flex", alignItems: "center", padding: "100px clamp(20px,5vw,72px) 60px", overflow: "hidden" }}>
+      <section id="hero" aria-label="Welcome" style={{ position: "relative", minHeight: "100vh", display: "flex", alignItems: "center", padding: "100px clamp(20px,5vw,72px) 60px", overflow: "hidden" }}>
         <GradientMesh />
         <div className="hero-split" style={{ display: "flex", alignItems: "center", gap: "clamp(40px,6vw,100px)", maxWidth: 1440, margin: "0 auto", width: "100%", position: "relative", zIndex: 2 }}>
           <div style={{ flex: "1 1 58%" }}>
@@ -102,12 +103,7 @@ export default function App() {
             </div>
           </div>
         </div>
-        <div style={{ position: "absolute", bottom: 32, left: "50%", transform: "translateX(-50%)", display: "flex", flexDirection: "column", alignItems: "center", gap: 10, opacity: Math.max(0, 1 - sy / 300) }}>
-          <span style={{ fontSize: 8, letterSpacing: 5, textTransform: "uppercase", color: "var(--stone)", fontWeight: 600 }}>Scroll</span>
-          <div style={{ width: 1, height: 44, overflow: "hidden" }}><div style={{ width: 1, height: 44, background: "var(--gold)", animation: "float 2s ease-in-out infinite" }} /></div>
-        </div>
       </section>
-      </header>
 
       <main id="main-content">
 
@@ -136,7 +132,7 @@ export default function App() {
       </div>
 
       {/* ═══ ABOUT ═══ */}
-      <section id="about" ref={abRef} style={{ padding: "var(--section-pad) var(--side-pad)", maxWidth: 1440, margin: "0 auto" }}>
+      <section id="about" ref={abRef} aria-label="About our practice" style={{ padding: "var(--section-pad) var(--side-pad)", maxWidth: 1440, margin: "0 auto" }}>
         <div className="about-split" style={{ display: "flex", gap: "clamp(48px,7vw,120px)", alignItems: "center", opacity: abVis ? 1 : 0.01, transform: abVis ? "none" : "translateY(30px)", transition: "all 1s cubic-bezier(.16,1,.3,1)" }}>
           <div style={{ flex: "1 1 55%" }}>
             <div className="eyebrow">Our Practice</div>
@@ -173,7 +169,7 @@ export default function App() {
       </section>
 
       {/* ═══ SERVICES ═══ */}
-      <section id="services" ref={svcRef} style={{ padding: "80px clamp(20px,5vw,72px) 40px", maxWidth: 1440, margin: "0 auto" }}>
+      <section id="services" ref={svcRef} aria-label="Our services" style={{ padding: "80px clamp(20px,5vw,72px) 40px", maxWidth: 1440, margin: "0 auto" }}>
         <div style={{ textAlign: "center", marginBottom: 80, opacity: svcVis?1:0.01, transform: svcVis?"none":"translateY(30px)", transition: "all .8s cubic-bezier(.16,1,.3,1)" }}>
           <div style={{ fontSize: 10, letterSpacing: 5, textTransform: "uppercase", color: "var(--gold)", fontWeight: 600, marginBottom: 16 }}>What We Treat</div>
           <h2 className="display" style={{ fontSize: "clamp(36px,5vw,60px)", marginBottom: 16 }}>Three Pillars of <em style={{ fontStyle: "italic", color: "var(--gold)" }}>Exceptional</em> Care</h2>
@@ -184,7 +180,7 @@ export default function App() {
       </section>
 
       {/* ═══ BY THE NUMBERS ═══ */}
-      <section ref={numRef} style={{ margin: "40px clamp(16px,3vw,48px)", borderRadius: 28, padding: "clamp(56px,8vw,100px) clamp(24px,5vw,72px)", background: "linear-gradient(160deg, var(--teal), #1A4848, var(--teal2))", position: "relative", overflow: "hidden" }}>
+      <section id="numbers" ref={numRef} aria-label="Practice statistics" style={{ margin: "40px clamp(16px,3vw,48px)", borderRadius: 28, padding: "clamp(56px,8vw,100px) clamp(24px,5vw,72px)", background: "linear-gradient(160deg, var(--teal), #1A4848, var(--teal2))", position: "relative", overflow: "hidden" }}>
         <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", opacity: .04 }}><AnimatedTrident size={400} delay={0} /></div>
         <div style={{ textAlign: "center", marginBottom: 56, position: "relative", zIndex: 2 }}>
           <div style={{ fontSize: 10, letterSpacing: 5, textTransform: "uppercase", color: "var(--gold-lt)", fontWeight: 600, marginBottom: 12 }}>By The Numbers</div>
@@ -201,7 +197,7 @@ export default function App() {
       </section>
 
       {/* ═══ PROVIDERS ═══ */}
-      <section id="providers" ref={prRef} style={{ padding: "var(--section-pad) var(--side-pad)", maxWidth: 1440, margin: "0 auto" }}>
+      <section id="providers" ref={prRef} aria-label="Meet your providers" style={{ padding: "var(--section-pad) var(--side-pad)", maxWidth: 1440, margin: "0 auto" }}>
         <div style={{ maxWidth: 560, marginBottom: 72, opacity: prVis?1:0.01, transform: prVis?"none":"translateY(30px)", transition: "all .8s cubic-bezier(.16,1,.3,1)" }}>
           <div className="eyebrow">Our Team</div>
           <h2 className="display" style={{ fontSize: "clamp(36px,5vw,56px)", marginBottom: 16 }}>Meet Your <em style={{ fontStyle: "italic", color: "var(--gold)" }}>Providers</em></h2>
@@ -225,7 +221,7 @@ export default function App() {
               <div style={{ maxHeight: bioOpen === i ? 200 : 0, overflow: "hidden", transition: "max-height .5s cubic-bezier(.16,1,.3,1)" }}>
                 <p style={{ fontSize: 12, lineHeight: 1.7, color: "var(--stone)", fontWeight: 300, paddingTop: 10, borderTop: "1px solid rgba(184,149,106,.08)" }}>{p.bio}</p>
               </div>
-              <div style={{ marginTop: 6, fontSize: 10, letterSpacing: 2, textTransform: "uppercase", color: "var(--gold)", fontWeight: 600 }}>{bioOpen === i ? "Close" : "View Bio"}</div>
+              <button onClick={() => setBioOpen(bioOpen === i ? null : i)} style={{ marginTop: 6, fontSize: 10, letterSpacing: 2, textTransform: "uppercase", color: "var(--gold)", fontWeight: 600, background: "none", border: "none", cursor: "pointer", padding: "4px 0", fontFamily: "inherit" }} aria-expanded={bioOpen === i}>{bioOpen === i ? "Close" : "View Bio"}</button>
             </div>
           ))}
         </div>
@@ -246,7 +242,7 @@ export default function App() {
       </section>
 
       {/* ═══ REVIEWS ═══ */}
-      <section id="reviews" ref={rvRef} style={{ padding: "80px var(--side-pad) var(--section-pad)", maxWidth: 1440, margin: "0 auto" }}>
+      <section id="reviews" ref={rvRef} aria-label="Patient reviews" style={{ padding: "80px var(--side-pad) var(--section-pad)", maxWidth: 1440, margin: "0 auto" }}>
         <div style={{ textAlign: "center", marginBottom: 64, opacity: rvVis?1:0.01, transform: rvVis?"none":"translateY(30px)", transition: "all .8s cubic-bezier(.16,1,.3,1)" }}>
           <div className="eyebrow" style={{ justifyContent: "center" }}>Patient Reviews</div>
           <h2 className="display" style={{ fontSize: "clamp(34px,4.5vw,54px)", marginBottom: 16 }}>What Our <em style={{ fontStyle: "italic", color: "var(--gold)" }}>Patients</em> Say</h2>
@@ -270,7 +266,7 @@ export default function App() {
       </section>
 
       {/* ═══ FAQ ═══ */}
-      <section ref={fqRef} style={{ padding: "40px var(--side-pad) var(--section-pad)", maxWidth: 1440, margin: "0 auto" }}>
+      <section id="faq" ref={fqRef} aria-label="Frequently asked questions" style={{ padding: "40px var(--side-pad) var(--section-pad)", maxWidth: 1440, margin: "0 auto" }}>
         <div className="faq-split" style={{ display: "flex", gap: "clamp(48px,7vw,100px)", opacity: fqVis?1:0.01, transform: fqVis?"none":"translateY(30px)", transition: "all .8s cubic-bezier(.16,1,.3,1)" }}>
           <div style={{ flex: "0 0 35%", position: "sticky", top: 120, alignSelf: "flex-start" }}>
             <div className="eyebrow">FAQ</div>
@@ -278,12 +274,12 @@ export default function App() {
             <p style={{ fontSize: 15, lineHeight: 1.75, color: "var(--stone)", fontWeight: 300, marginBottom: 32 }}>Can't find what you're looking for? Call us at (843) 797-3960.</p>
             <a href="tel:8437973960" className="btn btn-o" style={{ fontSize: 11, padding: "14px 32px" }}>Contact Us</a>
           </div>
-          <div style={{ flex: 1 }}>{FAQS.map((f, i) => <FaqItem key={i} q={f.q} a={f.a} />)}</div>
+          <div style={{ flex: 1 }}>{FAQS.map((f, i) => <FaqItem key={i} q={f.q} a={f.a} index={i} />)}</div>
         </div>
       </section>
 
       {/* ═══ CTA ═══ */}
-      <section ref={ctRef} style={{ margin: "20px clamp(16px,3vw,48px)", borderRadius: 28, background: "linear-gradient(150deg, var(--teal), #1A4848, var(--teal2))", padding: "clamp(64px,9vw,120px) clamp(32px,6vw,80px)", position: "relative", overflow: "hidden", opacity: ctVis?1:0.01, transform: ctVis?"none":"scale(.98)", transition: "all .8s cubic-bezier(.16,1,.3,1)" }}>
+      <section id="cta" ref={ctRef} aria-label="Schedule appointment" style={{ margin: "20px clamp(16px,3vw,48px)", borderRadius: 28, background: "linear-gradient(150deg, var(--teal), #1A4848, var(--teal2))", padding: "clamp(64px,9vw,120px) clamp(32px,6vw,80px)", position: "relative", overflow: "hidden", opacity: ctVis?1:0.01, transform: ctVis?"none":"scale(.98)", transition: "all .8s cubic-bezier(.16,1,.3,1)" }}>
         <div style={{ position: "absolute", top: "-20%", right: "-6%", width: 500, height: 500, borderRadius: "50%", background: "radial-gradient(circle, rgba(184,149,106,.1) 0%, transparent 60%)" }} />
         <div style={{ position: "relative", zIndex: 2, textAlign: "center", maxWidth: 620, margin: "0 auto" }}>
           <div style={{ fontSize: 10, letterSpacing: 5, textTransform: "uppercase", color: "var(--gold-lt)", fontWeight: 600, marginBottom: 24 }}>Ready?</div>
@@ -291,13 +287,13 @@ export default function App() {
           <p style={{ fontSize: 16, color: "rgba(255,255,255,.5)", maxWidth: 440, margin: "0 auto 44px", fontWeight: 300, lineHeight: 1.75 }}>New and existing patients welcome. Schedule your appointment with one of our board-certified dermatologists.</p>
           <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
             <a href="tel:8437973960" className="btn btn-g">Call (843) 797-3960 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></a>
-            <a href="https://tridentdermatology.ema.md/ema/Login.action" className="btn" style={{ background: "rgba(255,255,255,.07)", color: "white", border: "1px solid rgba(255,255,255,.12)" }}>Patient Portal</a>
+            <a href="https://tridentdermatology.ema.md/ema/Login.action" target="_blank" rel="noopener noreferrer" className="btn" style={{ background: "rgba(255,255,255,.07)", color: "white", border: "1px solid rgba(255,255,255,.12)" }}>Patient Portal</a>
           </div>
         </div>
       </section>
 
       {/* ═══ LOCATION ═══ */}
-      <section id="location" ref={loRef} style={{ padding: "var(--section-pad) var(--side-pad) 100px", maxWidth: 1440, margin: "0 auto" }}>
+      <section id="location" ref={loRef} aria-label="Office location" style={{ padding: "var(--section-pad) var(--side-pad) 100px", maxWidth: 1440, margin: "0 auto" }}>
         <div className="loc-split" style={{ display: "flex", gap: "clamp(48px,7vw,100px)", alignItems: "flex-start", opacity: loVis?1:0.01, transform: loVis?"none":"translateY(30px)", transition: "all .8s cubic-bezier(.16,1,.3,1)" }}>
           <div style={{ flex: 1 }}>
             <div className="eyebrow">Visit Us</div>

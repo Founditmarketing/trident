@@ -64,17 +64,18 @@ export function StarIcon() {
   return <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--gold)" stroke="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>;
 }
 
-export function FaqItem({ q, a }) {
+export function FaqItem({ q, a, index = 0 }) {
   const [open, setOpen] = useState(false);
+  const panelId = `faq-panel-${index}`;
   return (
     <div className={`faq-item ${open ? "open" : ""}`}>
-      <button className="faq-question" onClick={() => setOpen(!open)}>
+      <button className="faq-question" onClick={() => setOpen(!open)} aria-expanded={open} aria-controls={panelId}>
         <span>{q}</span>
         <span className="faq-icon">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke={open ? "white" : "var(--gold)"} strokeWidth="2"><path d="M12 5v14M5 12h14"/></svg>
         </span>
       </button>
-      <div className="faq-answer">
+      <div className="faq-answer" id={panelId} role="region" aria-labelledby={panelId}>
         <p style={{ fontSize: 15, lineHeight: 1.85, color: "var(--stone)", fontWeight: 300, maxWidth: 600 }}>{a}</p>
       </div>
     </div>
@@ -96,7 +97,7 @@ export function ServicePanel({ num, title, desc, items, align, vis, delay, dark,
         boxShadow: dark ? "0 32px 80px rgba(0,0,0,0.2)" : "0 24px 60px rgba(23,54,58,0.08)",
       }}>
         {video ? (
-          <video src={video} poster={image} autoPlay loop muted playsInline style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+          <video src={video} poster={image} autoPlay loop muted playsInline preload="none" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
         ) : (
           <img src={image} alt={title} style={{ width: "100%", height: "100%", objectFit: "cover" }} loading="lazy" />
         )}
