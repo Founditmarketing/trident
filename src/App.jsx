@@ -26,6 +26,7 @@ export default function App() {
 
   return (
     <div style={{ background: "var(--bg)", color: "var(--ink)", fontFamily: "'DM Sans',sans-serif" }}>
+      <a href="#main-content" className="sr-only" style={{ position: "absolute", left: -9999, top: "auto", width: 1, height: 1, overflow: "hidden", zIndex: 9999 }} onFocus={e => { e.target.style.position = "fixed"; e.target.style.top = "10px"; e.target.style.left = "10px"; e.target.style.width = "auto"; e.target.style.height = "auto"; e.target.style.padding = "12px 24px"; e.target.style.background = "var(--teal)"; e.target.style.color = "white"; e.target.style.borderRadius = "8px"; e.target.style.fontSize = "14px"; }} onBlur={e => { e.target.style.position = "absolute"; e.target.style.left = "-9999px"; }}>Skip to main content</a>
       <div className="grain" />
 
       {/* ═══ NAV ═══ */}
@@ -45,6 +46,7 @@ export default function App() {
           {[0,1,2].map(i => <span key={i} style={{ width: 22, height: 1.5, background: "var(--teal)", borderRadius: 2, transition: "all .3s", transform: menuOpen ? (i===0?"rotate(45deg) translate(4.5px,4.5px)":i===2?"rotate(-45deg) translate(4.5px,-4.5px)":"scaleX(0)") : "none", opacity: menuOpen&&i===1?0:1 }} />)}
         </button>
       </nav>
+      <header>
 
       {menuOpen && <div className="mob-menu">
         {["About","Services","Providers","Reviews","Location"].map((s,i) => <button key={s} onClick={() => go(s.toLowerCase())} style={{ background:"none",border:"none",fontFamily:"'Cormorant Garamond',serif",fontSize:42,fontWeight:300,color:"var(--teal)",cursor:"pointer",animation:`textUp .5s ease ${i*.06}s both` }}>{s}</button>)}
@@ -102,6 +104,9 @@ export default function App() {
           <div style={{ width: 1, height: 44, overflow: "hidden" }}><div style={{ width: 1, height: 44, background: "var(--gold)", animation: "float 2s ease-in-out infinite" }} /></div>
         </div>
       </section>
+      </header>
+
+      <main id="main-content">
 
       {/* ═══ TRUST BAR ═══ */}
       <div style={{ padding: "28px clamp(20px,5vw,72px)", background: "var(--teal)", display: "flex", justifyContent: "center", gap: "clamp(24px,5vw,72px)", flexWrap: "wrap", animation: "fadeIn 1s ease 1.5s both" }}>
@@ -129,7 +134,7 @@ export default function App() {
 
       {/* ═══ ABOUT ═══ */}
       <section id="about" ref={abRef} style={{ padding: "var(--section-pad) var(--side-pad)", maxWidth: 1440, margin: "0 auto" }}>
-        <div className="about-split" style={{ display: "flex", gap: "clamp(48px,7vw,120px)", alignItems: "center", opacity: abVis ? 1 : 0, transform: abVis ? "none" : "translateY(50px)", transition: "all 1s cubic-bezier(.16,1,.3,1)" }}>
+        <div className="about-split" style={{ display: "flex", gap: "clamp(48px,7vw,120px)", alignItems: "center", opacity: abVis ? 1 : 0.01, transform: abVis ? "none" : "translateY(30px)", transition: "all 1s cubic-bezier(.16,1,.3,1)" }}>
           <div style={{ flex: "1 1 55%" }}>
             <div className="eyebrow">Our Practice</div>
             <h2 className="display" style={{ fontSize: "clamp(36px,5vw,62px)", marginBottom: 32 }}>
@@ -166,7 +171,7 @@ export default function App() {
 
       {/* ═══ SERVICES ═══ */}
       <section id="services" ref={svcRef} style={{ padding: "80px clamp(20px,5vw,72px) 40px", maxWidth: 1440, margin: "0 auto" }}>
-        <div style={{ textAlign: "center", marginBottom: 80, opacity: svcVis?1:0, transform: svcVis?"none":"translateY(40px)", transition: "all .8s cubic-bezier(.16,1,.3,1)" }}>
+        <div style={{ textAlign: "center", marginBottom: 80, opacity: svcVis?1:0.01, transform: svcVis?"none":"translateY(30px)", transition: "all .8s cubic-bezier(.16,1,.3,1)" }}>
           <div style={{ fontSize: 10, letterSpacing: 5, textTransform: "uppercase", color: "var(--gold)", fontWeight: 600, marginBottom: 16 }}>What We Treat</div>
           <h2 className="display" style={{ fontSize: "clamp(36px,5vw,60px)", marginBottom: 16 }}>Three Pillars of <em style={{ fontStyle: "italic", color: "var(--gold)" }}>Exceptional</em> Care</h2>
         </div>
@@ -194,7 +199,7 @@ export default function App() {
 
       {/* ═══ PROVIDERS ═══ */}
       <section id="providers" ref={prRef} style={{ padding: "var(--section-pad) var(--side-pad)", maxWidth: 1440, margin: "0 auto" }}>
-        <div style={{ maxWidth: 560, marginBottom: 72, opacity: prVis?1:0, transform: prVis?"none":"translateY(40px)", transition: "all .8s cubic-bezier(.16,1,.3,1)" }}>
+        <div style={{ maxWidth: 560, marginBottom: 72, opacity: prVis?1:0.01, transform: prVis?"none":"translateY(30px)", transition: "all .8s cubic-bezier(.16,1,.3,1)" }}>
           <div className="eyebrow">Our Team</div>
           <h2 className="display" style={{ fontSize: "clamp(36px,5vw,56px)", marginBottom: 16 }}>Meet Your <em style={{ fontStyle: "italic", color: "var(--gold)" }}>Providers</em></h2>
           <p style={{ fontSize: 16, lineHeight: 1.75, color: "var(--stone)", fontWeight: 300 }}>A team of specialists with decades of combined experience — dedicated to your skin's health and beauty.</p>
@@ -204,7 +209,7 @@ export default function App() {
         </div>
         <div className="prov-grid" style={{ display: "grid", gridTemplateColumns: "repeat(5,1fr)", gap: 16, marginBottom: 48 }}>
           {DOCS.map((p, i) => (
-            <div key={i} className="prov-card" onClick={() => setBioOpen(bioOpen === i ? null : i)} style={{ opacity: prVis?1:0, transform: prVis?"none":"translateY(30px)", transition: `all .6s cubic-bezier(.16,1,.3,1) ${i*.08}s`, cursor: "pointer" }}>
+            <div key={i} className="prov-card" onClick={() => setBioOpen(bioOpen === i ? null : i)} style={{ opacity: prVis?1:0.01, transform: prVis?"none":"translateY(20px)", transition: `all .6s cubic-bezier(.16,1,.3,1) ${i*.08}s`, cursor: "pointer" }}>
               <div style={{ width: 100, height: 100, borderRadius: "50%", margin: "0 auto 20px", overflow: "hidden", border: "3px solid rgba(184,149,106,.15)", position: "relative" }}>
                 <img src={p.img} alt={p.name} style={{ width: "100%", height: "100%", objectFit: "cover" }} loading="lazy" />
                 {p.featured && <div style={{ position: "absolute", bottom: 0, right: 0, width: 22, height: 22, borderRadius: "50%", background: "var(--gold)", display: "flex", alignItems: "center", justifyContent: "center", border: "2px solid white" }}>
@@ -226,7 +231,7 @@ export default function App() {
         </div>
         <div className="pa-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 16, maxWidth: 740 }}>
           {PAS.map((p, i) => (
-            <div key={i} className="prov-card" style={{ padding: "32px 24px", opacity: prVis?1:0, transform: prVis?"none":"translateY(30px)", transition: `all .6s cubic-bezier(.16,1,.3,1) ${(i+5)*.08}s` }}>
+            <div key={i} className="prov-card" style={{ padding: "32px 24px", opacity: prVis?1:0.01, transform: prVis?"none":"translateY(20px)", transition: `all .6s cubic-bezier(.16,1,.3,1) ${(i+5)*.08}s` }}>
               <div style={{ width: 80, height: 80, borderRadius: "50%", margin: "0 auto 16px", overflow: "hidden", border: "3px solid rgba(184,149,106,.1)" }}>
                 <img src={p.img} alt={p.name} style={{ width: "100%", height: "100%", objectFit: "cover" }} loading="lazy" />
               </div>
@@ -239,7 +244,7 @@ export default function App() {
 
       {/* ═══ REVIEWS ═══ */}
       <section id="reviews" ref={rvRef} style={{ padding: "80px var(--side-pad) var(--section-pad)", maxWidth: 1440, margin: "0 auto" }}>
-        <div style={{ textAlign: "center", marginBottom: 64, opacity: rvVis?1:0, transform: rvVis?"none":"translateY(40px)", transition: "all .8s cubic-bezier(.16,1,.3,1)" }}>
+        <div style={{ textAlign: "center", marginBottom: 64, opacity: rvVis?1:0.01, transform: rvVis?"none":"translateY(30px)", transition: "all .8s cubic-bezier(.16,1,.3,1)" }}>
           <div className="eyebrow" style={{ justifyContent: "center" }}>Patient Reviews</div>
           <h2 className="display" style={{ fontSize: "clamp(34px,4.5vw,54px)", marginBottom: 16 }}>What Our <em style={{ fontStyle: "italic", color: "var(--gold)" }}>Patients</em> Say</h2>
           <a href="https://www.google.com/maps/place/Trident+Dermatology/@32.8867,-80.0389,15z/" target="_blank" rel="noopener noreferrer" style={{ display: "inline-flex", alignItems: "center", gap: 10, fontSize: 13, color: "var(--stone)", fontWeight: 400, transition: "color .3s" }} onMouseEnter={e=>e.currentTarget.style.color="var(--gold)"} onMouseLeave={e=>e.currentTarget.style.color="var(--stone)"}>
@@ -249,7 +254,7 @@ export default function App() {
         </div>
         <div className="reviews-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 24 }}>
           {REVIEWS.map((r, i) => (
-            <div key={i} className="review-card" style={{ opacity: rvVis?1:0, transform: rvVis?"none":"translateY(30px)", transition: `all .6s cubic-bezier(.16,1,.3,1) ${i*.08}s` }}>
+            <div key={i} className="review-card" style={{ opacity: rvVis?1:0.01, transform: rvVis?"none":"translateY(20px)", transition: `all .6s cubic-bezier(.16,1,.3,1) ${i*.08}s` }}>
               <div className="review-stars">{[...Array(r.rating)].map((_,j) => <StarIcon key={j} />)}</div>
               <p style={{ fontSize: 15, lineHeight: 1.8, color: "var(--stone)", fontWeight: 300, marginBottom: 24, fontStyle: "italic" }}>"{r.text}"</p>
               <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
@@ -263,7 +268,7 @@ export default function App() {
 
       {/* ═══ FAQ ═══ */}
       <section ref={fqRef} style={{ padding: "40px var(--side-pad) var(--section-pad)", maxWidth: 1440, margin: "0 auto" }}>
-        <div className="faq-split" style={{ display: "flex", gap: "clamp(48px,7vw,100px)", opacity: fqVis?1:0, transform: fqVis?"none":"translateY(40px)", transition: "all .8s cubic-bezier(.16,1,.3,1)" }}>
+        <div className="faq-split" style={{ display: "flex", gap: "clamp(48px,7vw,100px)", opacity: fqVis?1:0.01, transform: fqVis?"none":"translateY(30px)", transition: "all .8s cubic-bezier(.16,1,.3,1)" }}>
           <div style={{ flex: "0 0 35%", position: "sticky", top: 120, alignSelf: "flex-start" }}>
             <div className="eyebrow">FAQ</div>
             <h2 className="display" style={{ fontSize: "clamp(30px,4vw,48px)", marginBottom: 20 }}>Common<br/><em style={{ fontStyle: "italic", color: "var(--gold)" }}>Questions</em></h2>
@@ -275,7 +280,7 @@ export default function App() {
       </section>
 
       {/* ═══ CTA ═══ */}
-      <section ref={ctRef} style={{ margin: "20px clamp(16px,3vw,48px)", borderRadius: 28, background: "linear-gradient(150deg, var(--teal), #1A4848, var(--teal2))", padding: "clamp(64px,9vw,120px) clamp(32px,6vw,80px)", position: "relative", overflow: "hidden", opacity: ctVis?1:0, transform: ctVis?"none":"scale(.96)", transition: "all .8s cubic-bezier(.16,1,.3,1)" }}>
+      <section ref={ctRef} style={{ margin: "20px clamp(16px,3vw,48px)", borderRadius: 28, background: "linear-gradient(150deg, var(--teal), #1A4848, var(--teal2))", padding: "clamp(64px,9vw,120px) clamp(32px,6vw,80px)", position: "relative", overflow: "hidden", opacity: ctVis?1:0.01, transform: ctVis?"none":"scale(.98)", transition: "all .8s cubic-bezier(.16,1,.3,1)" }}>
         <div style={{ position: "absolute", top: "-20%", right: "-6%", width: 500, height: 500, borderRadius: "50%", background: "radial-gradient(circle, rgba(184,149,106,.1) 0%, transparent 60%)" }} />
         <div style={{ position: "relative", zIndex: 2, textAlign: "center", maxWidth: 620, margin: "0 auto" }}>
           <div style={{ fontSize: 10, letterSpacing: 5, textTransform: "uppercase", color: "var(--gold-lt)", fontWeight: 600, marginBottom: 24 }}>Ready?</div>
@@ -290,7 +295,7 @@ export default function App() {
 
       {/* ═══ LOCATION ═══ */}
       <section id="location" ref={loRef} style={{ padding: "var(--section-pad) var(--side-pad) 100px", maxWidth: 1440, margin: "0 auto" }}>
-        <div className="loc-split" style={{ display: "flex", gap: "clamp(48px,7vw,100px)", alignItems: "flex-start", opacity: loVis?1:0, transform: loVis?"none":"translateY(40px)", transition: "all .8s cubic-bezier(.16,1,.3,1)" }}>
+        <div className="loc-split" style={{ display: "flex", gap: "clamp(48px,7vw,100px)", alignItems: "flex-start", opacity: loVis?1:0.01, transform: loVis?"none":"translateY(30px)", transition: "all .8s cubic-bezier(.16,1,.3,1)" }}>
           <div style={{ flex: 1 }}>
             <div className="eyebrow">Visit Us</div>
             <h2 className="display" style={{ fontSize: "clamp(34px,4vw,48px)", marginBottom: 48 }}>Our <em style={{ fontStyle: "italic", color: "var(--gold)" }}>Location</em></h2>
@@ -322,6 +327,7 @@ export default function App() {
       </section>
 
       {/* ═══ FOOTER ═══ */}
+      </main>
       <footer style={{ background: "var(--teal)", color: "rgba(255,255,255,.55)", padding: "80px clamp(20px,5vw,72px) 40px" }}>
         <div style={{ maxWidth: 1440, margin: "0 auto" }}>
           <div className="ft-grid" style={{ display: "grid", gridTemplateColumns: "2.2fr 1fr 1fr 1fr", gap: "clamp(24px,4vw,56px)", marginBottom: 64 }}>
@@ -330,13 +336,25 @@ export default function App() {
                 <TridentLogo color="white" height={26} />
                 <div><div style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: 20, fontWeight: 600 }}>Trident</div><div style={{ fontSize: 7, letterSpacing: 4, textTransform: "uppercase", opacity: .35, marginTop: 1 }}>Dermatology</div></div>
               </div>
-              <p style={{ fontSize: 14, lineHeight: 1.75, maxWidth: 280, fontWeight: 300 }}>Comprehensive dermatology for the Lowcountry — clinical excellence meets compassionate care.</p>
+              <p style={{ fontSize: 14, lineHeight: 1.75, maxWidth: 280, fontWeight: 300, marginBottom: 24 }}>Comprehensive dermatology for the Lowcountry — clinical excellence meets compassionate care.</p>
+              {/* Social Media Links */}
+              <div style={{ display: "flex", gap: 12 }}>
+                <a href="https://www.facebook.com/TridentDermatology/" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook" style={{ width: 36, height: 36, borderRadius: "50%", border: "1px solid rgba(255,255,255,.12)", display: "flex", alignItems: "center", justifyContent: "center", transition: "all .3s" }} onMouseEnter={e=>{e.currentTarget.style.borderColor="var(--gold-lt)";e.currentTarget.style.background="rgba(255,255,255,.08)"}} onMouseLeave={e=>{e.currentTarget.style.borderColor="rgba(255,255,255,.12)";e.currentTarget.style.background="transparent"}}>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="rgba(255,255,255,.55)"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+                </a>
+                <a href="https://www.instagram.com/tridentderm/" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram" style={{ width: 36, height: 36, borderRadius: "50%", border: "1px solid rgba(255,255,255,.12)", display: "flex", alignItems: "center", justifyContent: "center", transition: "all .3s" }} onMouseEnter={e=>{e.currentTarget.style.borderColor="var(--gold-lt)";e.currentTarget.style.background="rgba(255,255,255,.08)"}} onMouseLeave={e=>{e.currentTarget.style.borderColor="rgba(255,255,255,.12)";e.currentTarget.style.background="transparent"}}>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.55)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><path d="M17.5 6.5h.01"/></svg>
+                </a>
+                <a href="https://www.google.com/maps/place/Trident+Dermatology/" target="_blank" rel="noopener noreferrer" aria-label="Find us on Google" style={{ width: 36, height: 36, borderRadius: "50%", border: "1px solid rgba(255,255,255,.12)", display: "flex", alignItems: "center", justifyContent: "center", transition: "all .3s" }} onMouseEnter={e=>{e.currentTarget.style.borderColor="var(--gold-lt)";e.currentTarget.style.background="rgba(255,255,255,.08)"}} onMouseLeave={e=>{e.currentTarget.style.borderColor="rgba(255,255,255,.12)";e.currentTarget.style.background="transparent"}}>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="rgba(255,255,255,.55)"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                </a>
+              </div>
             </div>
             <div>
               <div style={{ fontSize: 9, letterSpacing: 4, textTransform: "uppercase", color: "var(--gold-lt)", fontWeight: 600, marginBottom: 24 }}>Services</div>
-              {[["Medical Dermatology","https://www.tridentderm.com/medical/"],["Cosmetic Treatments","https://www.tridentderm.com/cosmetic/"],["Mohs Surgery","https://www.tridentderm.com/mohs-surgery/"],["Skin Cancer Care","https://www.tridentderm.com/skin-cancer/"],["Botox & Fillers","https://www.tridentderm.com/botox/"]].map(([l,h],li) =>
-                <a key={li} href={h} style={{ display: "block", fontSize: 14, marginBottom: 14, fontWeight: 300, transition: "color .3s", color: "rgba(255,255,255,.55)" }}
-                  onMouseEnter={e=>e.target.style.color="white"} onMouseLeave={e=>e.target.style.color="rgba(255,255,255,.55)"}>{l}</a>)}
+              {[["Medical Dermatology","services"],["Cosmetic Treatments","services"],["Mohs Surgery","services"],["Meet Our Providers","providers"],["Patient Reviews","reviews"]].map(([l,h],li) =>
+                <button key={li} onClick={() => go(h)} style={{ display: "block", fontSize: 14, marginBottom: 14, fontWeight: 300, transition: "color .3s", color: "rgba(255,255,255,.55)", background: "none", border: "none", cursor: "pointer", padding: 0, textAlign: "left", fontFamily: "inherit" }}
+                  onMouseEnter={e=>e.target.style.color="white"} onMouseLeave={e=>e.target.style.color="rgba(255,255,255,.55)"}>{l}</button>)}
             </div>
             <div>
               <div style={{ fontSize: 9, letterSpacing: 4, textTransform: "uppercase", color: "var(--gold-lt)", fontWeight: 600, marginBottom: 24 }}>Resources</div>
@@ -350,7 +368,7 @@ export default function App() {
             </div>
           </div>
           <div style={{ borderTop: "1px solid rgba(255,255,255,.05)", paddingTop: 32, display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 16 }}>
-            <div style={{ fontSize: 11, fontWeight: 300, opacity: .35 }}>© {new Date().getFullYear()} Trident Dermatology</div>
+            <div style={{ fontSize: 11, fontWeight: 300, opacity: .35 }}>© {new Date().getFullYear()} Trident Dermatology. All rights reserved.</div>
             <div style={{ display: "flex", gap: 28 }}>
               {["Privacy","Disclaimer","Accessibility"].map((s,i) => <span key={i} style={{ fontSize: 10, fontWeight: 300, opacity: .35, cursor: "pointer", letterSpacing: 1.5, transition: "opacity .3s" }}
                 onMouseEnter={e=>e.target.style.opacity=1} onMouseLeave={e=>e.target.style.opacity=.35}>{s}</span>)}

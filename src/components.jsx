@@ -88,7 +88,7 @@ export function ServicePanel({ num, title, desc, items, align, vis, delay, dark,
     <div style={{
       display: "flex", flexDirection: align === "right" ? "row-reverse" : "row",
       gap: "clamp(32px,5vw,80px)", alignItems: "center",
-      opacity: vis ? 1 : 0, transform: vis ? "none" : `translateX(${align === "right" ? 60 : -60}px)`,
+      opacity: vis ? 1 : 0.01, transform: vis ? "none" : `translateX(${align === "right" ? 30 : -30}px)`,
       transition: `all 1s cubic-bezier(0.16,1,0.3,1) ${delay}s`, marginBottom: 100,
     }} className="svc-panel">
       <div style={{

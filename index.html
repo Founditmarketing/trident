@@ -29,5 +29,74 @@
 <body>
   <div id="root"></div>
   <script type="module" src="/src/main.jsx"></script>
+
+  <!-- Schema.org Structured Data: MedicalBusiness -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalBusiness",
+    "@id": "https://www.tridentderm.com",
+    "name": "Trident Dermatology",
+    "description": "Trident Dermatology in North Charleston, SC offers comprehensive medical, cosmetic, and surgical dermatology from five board-certified physicians.",
+    "url": "https://www.tridentderm.com",
+    "telephone": "+1-843-797-3960",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "9295 Medical Plaza Drive, Suite A",
+      "addressLocality": "North Charleston",
+      "addressRegion": "SC",
+      "postalCode": "29406",
+      "addressCountry": "US"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 32.8867,
+      "longitude": -80.0389
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+      "opens": "07:30",
+      "closes": "17:00"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "250",
+      "bestRating": "5"
+    },
+    "medicalSpecialty": ["Dermatology","Mohs Surgery","Cosmetic Dermatology"],
+    "priceRange": "$$",
+    "image": "https://www.tridentderm.com/images/hero-doctor.png",
+    "sameAs": [
+      "https://www.facebook.com/TridentDermatology/",
+      "https://www.instagram.com/tridentderm/"
+    ],
+    "hasMap": "https://www.google.com/maps/place/Trident+Dermatology/",
+    "employee": [
+      {"@type":"Physician","name":"Bradley J. Saylors, MD","medicalSpecialty":"Dermatology"},
+      {"@type":"Physician","name":"John Maize Jr., MD","medicalSpecialty":"Dermatopathology"},
+      {"@type":"Physician","name":"Edward George Butler II, MD","medicalSpecialty":"Dermatology"},
+      {"@type":"Physician","name":"David B. Duff, MD","medicalSpecialty":"Dermatology"},
+      {"@type":"Physician","name":"Alex M. Drohan, MD","medicalSpecialty":"Mohs Surgery"}
+    ]
+  }
+  </script>
+
+  <!-- Schema.org Structured Data: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"Do I need a referral to see a dermatologist?","acceptedAnswer":{"@type":"Answer","text":"No referral is needed. You can call our office directly at (843) 797-3960 to schedule an appointment. However, some insurance plans may require a referral, so we recommend checking with your provider."}},
+      {"@type":"Question","name":"What should I expect at my first visit?","acceptedAnswer":{"@type":"Answer","text":"Your first visit will include a comprehensive skin evaluation. Please bring your insurance card, photo ID, and a list of current medications. Plan to arrive 15 minutes early to complete paperwork."}},
+      {"@type":"Question","name":"What is Mohs surgery?","acceptedAnswer":{"@type":"Answer","text":"Mohs micrographic surgery is the gold standard for treating skin cancer, offering the highest cure rate (up to 99%) while preserving the maximum amount of healthy tissue."}},
+      {"@type":"Question","name":"Do you offer cosmetic consultations?","acceptedAnswer":{"@type":"Answer","text":"Yes! We offer complimentary cosmetic consultations for treatments including Botox, dermal fillers, chemical peels, laser treatments, and microneedling."}},
+      {"@type":"Question","name":"What insurance plans do you accept?","acceptedAnswer":{"@type":"Answer","text":"We accept most major insurance plans including Medicare, Blue Cross Blue Shield, Cigna, Aetna, United Healthcare, and Tricare."}},
+      {"@type":"Question","name":"How often should I have a skin cancer screening?","acceptedAnswer":{"@type":"Answer","text":"We recommend annual full-body skin exams for all adults. If you have a history of skin cancer, significant sun exposure, or a family history, more frequent screenings may be recommended."}}
+    ]
+  }
+  </script>
 </body>
 </html>

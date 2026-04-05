@@ -19,10 +19,10 @@ button { cursor: pointer; font-family: inherit; }
   --cream: #EDE5D8;
   --taupe: #D8CCBC;
 
-  /* Gold accent family */
-  --gold: #B8956A;
-  --gold-lt: #CEAF8A;
-  --gold-mut: #D9C9AB;
+  /* Gold accent family — WCAG AA compliant on --bg */
+  --gold: #9A7B52;
+  --gold-lt: #B8956A;
+  --gold-mut: #C4AA82;
   --gold-light: #CEAF8A;
 
   /* Teal brand family */
@@ -30,15 +30,15 @@ button { cursor: pointer; font-family: inherit; }
   --teal2: #20504E;
   --teal3: #2E6B68;
 
-  /* Neutrals */
+  /* Neutrals — WCAG AA compliant on --bg */
   --ink: #161616;
   --charcoal: #2A2A2A;
-  --stone: #73706A;
-  --mist: #B0AAA0;
+  --stone: #5C5955;
+  --mist: #8A847A;
   --white: #FFFFFF;
 
   /* Spacing scale */
-  --section-pad: clamp(80px, 10vw, 160px);
+  --section-pad: clamp(56px, 7vw, 100px);
   --content-max: 1440px;
   --side-pad: clamp(20px, 5vw, 72px);
 
@@ -337,5 +337,33 @@ button { cursor: pointer; font-family: inherit; }
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+  /* Force all content visible immediately */
+  section, section > div {
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }
+
+/* ── SAFETY NET: Force content visible after 2s ──────────────────── */
+/* Prevents blank-page if IntersectionObserver or JS fails */
+@keyframes forceVisible {
+  to { opacity: 1 !important; transform: none !important; }
+}
+section {
+  animation: forceVisible 0.01s ease 2.5s both;
+}
+
+/* ── SCREEN READER ONLY ──────────────────────────────────────────── */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
+
 
