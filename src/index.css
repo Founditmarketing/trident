@@ -51,6 +51,115 @@ button { cursor: pointer; font-family: inherit; }
   /* Transitions */
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Nav / CTA backdrop — tokenized for theme switching */
+  --nav-bg: rgba(250,248,243,.45);
+  --nav-bg-solid: rgba(250,248,243,.95);
+  --nav-border: rgba(184,149,106,.08);
+}
+
+/* ── LIGHT MODE (crisp white) ────────────────────────────────────── */
+:root.light-mode {
+  /* Cool white backgrounds */
+  --bg: #FFFFFF;
+  --bg2: #F7F8FA;
+  --cream: #EEF0F4;
+  --taupe: #D0D4DC;
+
+  /* Gold stays warm but slightly refined */
+  --gold: #8E7044;
+  --gold-lt: #A68856;
+  --gold-mut: #B89E70;
+  --gold-light: #CBAF84;
+
+  /* Cooler teal for light bg contrast */
+  --teal: #0F2E32;
+  --teal2: #1A4448;
+  --teal3: #24605E;
+
+  /* Cooler neutrals */
+  --ink: #111215;
+  --charcoal: #1E2024;
+  --stone: #515660;
+  --mist: #7C818D;
+
+  /* Backdrop tokens */
+  --nav-bg: rgba(255,255,255,.55);
+  --nav-bg-solid: rgba(255,255,255,.95);
+  --nav-border: rgba(15,46,50,.06);
+}
+
+/* Smooth theme transition */
+*, *::before, *::after {
+  transition-property: background-color, color, border-color, box-shadow, fill, stroke;
+  transition-duration: .6s;
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+/* Preserve existing transition overrides */
+.btn, .lnk, .prov-card, .review-card, .faq-icon, .faq-question {
+  transition-duration: .5s;
+}
+
+/* ── LIGHT MODE COMPONENT OVERRIDES ───────────────────────────────── */
+:root.light-mode .prov-card {
+  background: rgba(247,248,250,0.7);
+  border-color: rgba(15,46,50,0.04);
+}
+:root.light-mode .prov-card:hover {
+  background: rgba(255,255,255,0.95);
+  box-shadow: 0 28px 70px rgba(15,46,50,0.06), 0 0 0 1px rgba(15,46,50,0.06);
+}
+:root.light-mode .review-card {
+  background: rgba(247,248,250,0.7);
+  border-color: rgba(15,46,50,0.04);
+}
+:root.light-mode .review-card:hover {
+  background: rgba(255,255,255,1);
+  box-shadow: 0 24px 60px rgba(15,46,50,0.06), 0 0 0 1px rgba(15,46,50,0.05);
+}
+:root.light-mode .mob-menu {
+  background: rgba(255,255,255,0.98);
+}
+:root.light-mode .faq-item {
+  border-color: rgba(15,46,50,0.06);
+}
+:root.light-mode .grain {
+  opacity: 0.02;
+}
+
+/* ── THEME TOGGLE BUTTON ─────────────────────────────────────────── */
+.theme-toggle {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(23,54,58,0.15);
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all .4s var(--ease-out);
+  position: relative;
+  flex-shrink: 0;
+}
+.theme-toggle:hover {
+  border-color: var(--gold);
+  background: rgba(184,149,106,0.06);
+  transform: scale(1.08);
+}
+.theme-toggle svg {
+  transition: transform .5s var(--ease-spring), opacity .3s;
+}
+.theme-toggle:active svg {
+  transform: rotate(180deg) scale(0.9);
+}
+:root.light-mode .theme-toggle {
+  border-color: rgba(15,46,50,0.12);
+  background: rgba(15,46,50,0.03);
+}
+:root.light-mode .theme-toggle:hover {
+  border-color: var(--gold);
+  background: rgba(184,149,106,0.08);
 }
 
 /* ── TYPOGRAPHY ───────────────────────────────────────────────────── */

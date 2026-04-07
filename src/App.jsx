@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { useScroll, useReveal, useCountUp } from "./hooks";
 import { DOCS, PAS, REVIEWS, FAQS } from "./data";
 import { GradientMesh, AnimatedTrident, TridentLogo, StarIcon, FaqItem, ServicePanel } from "./components";
@@ -9,6 +9,13 @@ export default function App() {
   const [bioOpen, setBioOpen] = useState(null);
   const [ftOpen, setFtOpen] = useState(null);
   const [mapActive, setMapActive] = useState(false);
+  const [lightMode, setLightMode] = useState(() => {
+    try { return localStorage.getItem('trident-theme') === 'light'; } catch { return false; }
+  });
+  useEffect(() => {
+    document.documentElement.classList.toggle('light-mode', lightMode);
+    try { localStorage.setItem('trident-theme', lightMode ? 'light' : 'warm'); } catch {}
+  }, [lightMode]);
   const navOp = Math.min(sy / 280, 1);
   const go = useCallback((id) => { document.getElementById(id)?.scrollIntoView({ behavior: "smooth" }); setMenuOpen(false); }, []);
 
@@ -32,7 +39,7 @@ export default function App() {
       <div className="grain" />
 
       {/* ═══ NAV ═══ */}
-      <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 100, height: 76, padding: "0 clamp(20px,5vw,72px)", display: "flex", alignItems: "center", justifyContent: "space-between", background: `rgba(250,248,243,${.45 + navOp * .5})`, backdropFilter: navOp > .05 ? `blur(${navOp * 28}px) saturate(1.4)` : "none", borderBottom: `1px solid rgba(184,149,106,${navOp * .08})` }}>
+      <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 100, height: 76, padding: "0 clamp(20px,5vw,72px)", display: "flex", alignItems: "center", justifyContent: "space-between", background: navOp > .05 ? `var(--nav-bg-solid)` : `var(--nav-bg)`, backdropFilter: navOp > .05 ? `blur(${navOp * 28}px) saturate(1.4)` : "none", borderBottom: navOp > .05 ? `1px solid var(--nav-border)` : "1px solid transparent" }}>
         <div onClick={() => go("hero")} style={{ display: "flex", alignItems: "center", gap: 14, cursor: "pointer" }}>
           <TridentLogo />
           <div>
@@ -42,6 +49,13 @@ export default function App() {
         </div>
         <div className="d-nav" style={{ display: "flex", gap: 40, alignItems: "center" }}>
           {["About","Services","Providers","Reviews","Location"].map(s => <button key={s} className="lnk" onClick={() => go(s.toLowerCase())}>{s}</button>)}
+          <button className="theme-toggle" onClick={() => setLightMode(!lightMode)} aria-label={lightMode ? "Switch to warm mode" : "Switch to light mode"} title={lightMode ? "Warm mode" : "Light mode"}>
+            {lightMode ? (
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            ) : (
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+            )}
+          </button>
           <a href="tel:8437973960" className="btn btn-p" style={{ padding: "11px 28px", fontSize: 11 }}>(843) 797-3960</a>
         </div>
         <button className="m-tog" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? "Close menu" : "Open menu"} aria-expanded={menuOpen} style={{ display: "none", flexDirection: "column", gap: 5, background: "none", border: "none", cursor: "pointer", padding: 12, zIndex: 1001 }}>
@@ -54,6 +68,13 @@ export default function App() {
         <a href="tel:8437973960" style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 14, letterSpacing: 3, textTransform: "uppercase", color: "var(--gold)", textDecoration: "none", fontWeight: 600, marginBottom: 16, animation: "textUp .4s ease both" }}>(843) 797-3960</a>
         {["About","Services","Providers","Reviews","Location"].map((s,i) => <button key={s} onClick={() => go(s.toLowerCase())} style={{ background:"none",border:"none",fontFamily:"'Cormorant Garamond',serif",fontSize:42,fontWeight:300,color:"var(--teal)",cursor:"pointer",animation:`textUp .5s ease ${i*.06}s both` }}>{s}</button>)}
         <a href="tel:8437973960" className="btn btn-g" style={{ marginTop:16,animation:"textUp .5s ease .3s both" }}>Call Now</a>
+        <button className="theme-toggle" onClick={() => setLightMode(!lightMode)} aria-label={lightMode ? "Switch to warm mode" : "Switch to light mode"} style={{ marginTop: 12, animation: "textUp .5s ease .35s both" }}>
+          {lightMode ? (
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          ) : (
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          )}
+        </button>
       </div>}
       </header>
 
@@ -386,7 +407,7 @@ export default function App() {
       </footer>
 
       {/* Sticky mobile CTA */}
-      {sy > 500 && <div style={{ position: "fixed", bottom: 0, left: 0, right: 0, padding: "12px 20px", background: "rgba(250,248,243,.95)", backdropFilter: "blur(24px)", borderTop: "1px solid rgba(184,149,106,.1)", display: "flex", justifyContent: "center", gap: 12, zIndex: 90, animation: "fadeIn .4s ease both" }}>
+      {sy > 500 && <div style={{ position: "fixed", bottom: 0, left: 0, right: 0, padding: "12px 20px", background: "var(--nav-bg-solid)", backdropFilter: "blur(24px)", borderTop: "1px solid var(--nav-border)", display: "flex", justifyContent: "center", gap: 12, zIndex: 90, animation: "fadeIn .4s ease both" }}>
         <a href="tel:8437973960" className="btn btn-p" style={{ padding: "12px 24px", fontSize: 11, flex: 1, maxWidth: 180, textAlign: "center", justifyContent: "center" }}>Call Now</a>
         <a href="https://tridentdermatology.ema.md/ema/Login.action" className="btn btn-o" style={{ padding: "12px 24px", fontSize: 11, flex: 1, maxWidth: 180, textAlign: "center", justifyContent: "center" }}>Portal</a>
       </div>}
