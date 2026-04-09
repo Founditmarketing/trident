@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 
 export function useScroll() {
   const [y, setY] = useState(0);
@@ -13,41 +13,51 @@ export function useScroll() {
 export function useReveal(t = 0.05) {
   const r = useRef(null);
   const [v, setV] = useState(false);
+  
   useEffect(() => {
     const el = r.current;
-    if (!el) return;
+    if (!el) { setV(true); return; } // No element = just show it
 
-    // Safety: if IO never fires (scroll container mismatch), use scroll fallback
-    const checkVisible = () => {
-      if (v) return;
-      const rect = el.getBoundingClientRect();
-      const inView = rect.top < window.innerHeight * 1.1 && rect.bottom > 0;
-      if (inView) setV(true);
-    };
+    // Immediately check if element is already in viewport
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight * 1.2 && rect.bottom > -100) {
+      setV(true);
+      return;
+    }
 
-    // Primary: IntersectionObserver with generous rootMargin
+    // IntersectionObserver with generous rootMargin
     let o;
     if ('IntersectionObserver' in window) {
       o = new IntersectionObserver(([e]) => {
         if (e.isIntersecting) {
           setV(true);
           o.disconnect();
-          window.removeEventListener("scroll", checkVisible);
         }
-      }, { threshold: t, rootMargin: "0px 0px 100px 0px", root: null });
+      }, { threshold: t, rootMargin: "200px 0px 200px 0px", root: null });
       o.observe(el);
     }
 
-    // Fallback: scroll-based check (catches IO misses from overflow containers)
+    // Scroll fallback — fires on every scroll tick until visible
+    const checkVisible = () => {
+      const r2 = el.getBoundingClientRect();
+      if (r2.top < window.innerHeight * 1.2 && r2.bottom > -100) {
+        setV(true);
+        window.removeEventListener("scroll", checkVisible);
+        if (o) o.disconnect();
+      }
+    };
     window.addEventListener("scroll", checkVisible, { passive: true });
-    // Also check on mount (elements already in view)
-    requestAnimationFrame(checkVisible);
+
+    // Ultimate safety net: force visible after 3 seconds no matter what
+    const timeout = setTimeout(() => { setV(true); }, 3000);
 
     return () => {
       if (o) o.disconnect();
       window.removeEventListener("scroll", checkVisible);
+      clearTimeout(timeout);
     };
-  }, [t, v]);
+  }, [t]); // removed `v` from deps — this effect runs once on mount
+
   return [r, v];
 }
 
