@@ -107,16 +107,16 @@ export default function MohsSurgery() {
         <div className="about-split" style={{ display: "flex", gap: "clamp(48px,7vw,100px)", alignItems: "center", opacity: docVis?1:0.01, transform: docVis?"none":"translateY(30px)", transition: "all 1s cubic-bezier(.16,1,.3,1)" }}>
           <div style={{ flex: "0 0 clamp(160px,20vw,260px)" }}>
             <div style={{ borderRadius: 24, overflow: "hidden", border: "3px solid rgba(184,149,106,.15)", boxShadow: "0 24px 60px rgba(23,54,58,.08)" }}>
-              <img src="/images/providers/alex-drohan.webp" alt="Dr. Alex M. Drohan, Fellowship-Trained Mohs Surgeon" style={{ width: "100%", display: "block", aspectRatio: "3/4", objectFit: "cover" }} loading="lazy" />
+              <img src="/images/providers/bradley-saylors.webp" alt="Dr. Bradley J. Saylors, Fellowship-Trained Mohs Surgeon" style={{ width: "100%", display: "block", aspectRatio: "3/4", objectFit: "cover" }} loading="lazy" />
             </div>
           </div>
           <div style={{ flex: 1 }}>
             <div className="eyebrow">Your Mohs Surgeon</div>
             <h2 className="display" style={{ fontSize: "clamp(30px,4vw,46px)", marginBottom: 16 }}>
-              Alex M. Drohan, <em style={{ fontStyle: "italic", color: "var(--gold)" }}>MD</em>
+              Bradley J. Saylors, <em style={{ fontStyle: "italic", color: "var(--gold)" }}>MD</em>
             </h2>
             <p style={{ fontSize: 16, lineHeight: 1.85, color: "var(--stone)", fontWeight: 300, marginBottom: 16, maxWidth: 500 }}>
-              Dr. Drohan is a fellowship-trained Mohs micrographic surgeon and a Charleston native. He graduated summa cum laude from Clemson University and completed his dermatology residency at the Medical University of South Carolina (MUSC).
+              Dr. Saylors is the founder of Trident Dermatology and a fellowship-trained Mohs micrographic surgeon. A graduate of the College of Charleston and the Medical University of South Carolina (MUSC), he has been performing Mohs surgery in the Lowcountry for over two decades.
             </p>
             <p style={{ fontSize: 16, lineHeight: 1.85, color: "var(--stone)", fontWeight: 300, marginBottom: 24, maxWidth: 500 }}>
               His specialized training in Mohs surgery and reconstructive techniques ensures that patients receive the most precise, tissue-sparing treatment with optimal cosmetic outcomes.
@@ -149,7 +149,7 @@ export default function MohsSurgery() {
         <div style={{ position: "relative", zIndex: 2, textAlign: "center", maxWidth: 620, margin: "0 auto" }}>
           <div style={{ fontSize: 10, letterSpacing: 5, textTransform: "uppercase", color: "var(--gold-lt)", fontWeight: 600, marginBottom: 24 }}>Take The Next Step</div>
           <h2 style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "clamp(34px,5vw,54px)", fontWeight: 300, color: "white", lineHeight: 1.12, marginBottom: 24 }}>Schedule Your <em style={{ fontStyle: "italic", color: "var(--gold-lt)" }}>Mohs</em> Consultation</h2>
-          <p style={{ fontSize: 16, color: "rgba(255,255,255,.5)", maxWidth: 440, margin: "0 auto 44px", fontWeight: 300, lineHeight: 1.75 }}>If you or your referring physician suspects skin cancer, contact us to schedule a Mohs surgery consultation with Dr. Drohan.</p>
+          <p style={{ fontSize: 16, color: "rgba(255,255,255,.5)", maxWidth: 440, margin: "0 auto 44px", fontWeight: 300, lineHeight: 1.75 }}>If you or your referring physician suspects skin cancer, contact us to schedule a Mohs surgery consultation with Dr. Saylors.</p>
           <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
             <a href="tel:8437973960" className="btn btn-g">Call (843) 797-3960</a>
             <Link to="/contact" className="btn" style={{ background: "rgba(255,255,255,.07)", color: "white", border: "1px solid rgba(255,255,255,.12)" }}>Visit Our Office</Link>
