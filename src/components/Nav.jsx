@@ -34,7 +34,7 @@ export default function Nav() {
           {NAV_ITEMS.map(item => (
             <NavLink key={item.to} to={item.to} className={({ isActive }) => `lnk${isActive ? ' lnk-active' : ''}`}>{item.label}</NavLink>
           ))}
-          <a href="tel:8437973960" className="btn btn-p" style={{ padding: "11px 28px", fontSize: 11 }}>(843) 797-3960</a>
+          <a href="https://tridentdermatology.ema.md/ema/Login.action" target="_blank" rel="noopener noreferrer" className="btn btn-p" style={{ padding: "11px 28px", fontSize: 11 }}>Patient Portal</a>
         </div>
         <button className="m-tog" onClick={() => setMenuOpen(true)} aria-label="Open menu" style={{ display: "none", flexDirection: "column", gap: 5, background: "none", border: "none", cursor: "pointer", padding: 12, visibility: menuOpen ? "hidden" : "visible" }}>
           {[0,1,2].map(i => <span key={i} style={{ width: 22, height: 1.5, background: "var(--teal)", borderRadius: 2 }} />)}
@@ -50,7 +50,7 @@ export default function Nav() {
         {NAV_ITEMS.map((item, i) => (
           <Link key={item.to} to={item.to} onClick={() => setMenuOpen(false)} style={{ background:"none",border:"none",fontFamily:"'Cormorant Garamond',serif",fontSize:42,fontWeight:300,color:"var(--teal)",cursor:"pointer",animation:`textUp .5s ease ${i*.06}s both`,textDecoration:"none" }}>{item.label}</Link>
         ))}
-        <a href="tel:8437973960" className="btn btn-g" style={{ marginTop:16,animation:"textUp .5s ease .3s both" }}>Call Now</a>
+        <a href="https://tridentdermatology.ema.md/ema/Login.action" target="_blank" rel="noopener noreferrer" className="btn btn-g" style={{ marginTop:16,animation:"textUp .5s ease .3s both" }}>Patient Portal</a>
       </div>}
     </>
   );
