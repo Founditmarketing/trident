@@ -222,21 +222,21 @@ nav, footer, .btn, .lnk, .prov-card, .review-card, .faq-icon, .faq-question,
 /* ══════════════════════════════════════════════════════════════════
    PROVIDER CARDS (Providers page — expanded)
    ══════════════════════════════════════════════════════════════════ */
-.provider-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 64px; }
-.provider-card { border-radius: var(--radius-lg); background: var(--card-bg); backdrop-filter: blur(16px); border: 1px solid var(--card-border); overflow: hidden; transition: all .55s var(--ease-out); display: flex; flex-direction: column; }
+.provider-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-bottom: 64px; }
+.provider-card { border-radius: var(--radius-lg); background: var(--card-bg); backdrop-filter: blur(16px); border: 1px solid var(--card-border); overflow: hidden; transition: all .55s var(--ease-out); display: flex; flex-direction: row; align-items: center; padding: 24px 28px; gap: 24px; }
 .provider-card:hover { transform: translateY(-6px); box-shadow: 0 24px 60px rgba(23,54,58,.08); border-color: var(--card-border-hover); }
-.provider-card__photo { position: relative; aspect-ratio: 1/1; overflow: hidden; }
+.provider-card__photo { position: relative; width: 80px; height: 80px; border-radius: 50%; overflow: hidden; flex-shrink: 0; border: 3px solid rgba(184,149,106,.15); }
 .provider-card__photo img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s var(--ease-out); }
-.provider-card:hover .provider-card__photo img { transform: scale(1.05); }
-.provider-card__photo--sm { aspect-ratio: 1/1; }
-.provider-card__badge { position: absolute; bottom: 12px; right: 12px; width: 28px; height: 28px; border-radius: 50%; background: var(--gold); display: flex; align-items: center; justify-content: center; border: 2px solid white; }
-.provider-card__info { padding: 28px; flex: 1; }
+.provider-card:hover .provider-card__photo img { transform: scale(1.08); }
+.provider-card__photo--sm { width: 64px; height: 64px; }
+.provider-card__badge { position: absolute; bottom: -2px; right: -2px; width: 22px; height: 22px; border-radius: 50%; background: var(--gold); display: flex; align-items: center; justify-content: center; border: 2px solid white; }
+.provider-card__info { flex: 1; min-width: 0; }
 .provider-card__name { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; color: var(--teal); margin-bottom: 4px; }
 .provider-card__cred { font-size: 12px; color: var(--gold); font-weight: 600; letter-spacing: 1.5px; margin-bottom: 8px; }
 .provider-card__focus { font-size: 13px; color: var(--stone); font-weight: 400; margin-bottom: 12px; }
 .provider-card__bio { font-size: 14px; line-height: 1.7; color: var(--stone); font-weight: 300; }
-.pa-grid-page { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-.provider-card--pa .provider-card__info { padding: 24px; }
+.pa-grid-page { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+.provider-card--pa { padding: 20px 24px; gap: 20px; }
 
 /* ══════════════════════════════════════════════════════════════════
    MOHS SURGERY PAGE
@@ -303,7 +303,7 @@ nav, footer, .btn, .lnk, .prov-card, .review-card, .faq-icon, .faq-question,
 .grain { position: fixed; inset: 0; pointer-events: none; z-index: 50; opacity: 0.04; mix-blend-mode: overlay; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); background-size: 128px; }
 
 /* ── MOBILE MENU ─────────────────────────────────────────────────── */
-.mob-menu { position: fixed; inset: 0; z-index: 999; background: rgba(250,248,243,0.98); backdrop-filter: blur(40px); display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 28px; animation: fadeIn 0.3s ease; }
+.mob-menu { position: fixed; inset: 0; z-index: 1020; background: rgba(250,248,243,0.98); backdrop-filter: blur(40px); display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 28px; animation: fadeIn 0.3s ease; }
 
 /* ── FAQ ──────────────────────────────────────────────────────────── */
 .faq-item { border-bottom: 1px solid rgba(184,149,106,0.08); overflow: hidden; }
@@ -340,7 +340,7 @@ nav, footer, .btn, .lnk, .prov-card, .review-card, .faq-icon, .faq-question,
 @media (max-width: 1024px) {
   .values-grid { grid-template-columns: repeat(2, 1fr); }
   .diff-grid { grid-template-columns: repeat(2, 1fr); }
-  .provider-grid { grid-template-columns: repeat(2, 1fr); }
+  .provider-grid { grid-template-columns: 1fr 1fr; }
   .visit-steps { grid-template-columns: repeat(2, 1fr); }
   .insurance-grid { grid-template-columns: repeat(2, 1fr); }
   .mohs-stats { grid-template-columns: repeat(3, 1fr); }
@@ -362,7 +362,7 @@ nav, footer, .btn, .lnk, .prov-card, .review-card, .faq-icon, .faq-question,
   .svc-preview-grid { grid-template-columns: 1fr; }
   .portal-cards { grid-template-columns: 1fr; }
   .directions-grid { grid-template-columns: 1fr; }
-  .pa-grid-page { grid-template-columns: repeat(2, 1fr); }
+  .pa-grid-page { grid-template-columns: 1fr; }
   .mohs-stats { grid-template-columns: 1fr; gap: 16px; }
   .insurance-callout { flex-direction: column; text-align: center; padding: 36px 28px; }
   .sticky-mobile-cta { display: flex; }
@@ -377,6 +377,7 @@ nav, footer, .btn, .lnk, .prov-card, .review-card, .faq-icon, .faq-question,
   .diff-grid { grid-template-columns: 1fr; }
   .provider-grid { grid-template-columns: 1fr; }
   .pa-grid-page { grid-template-columns: 1fr; }
+  .provider-card { padding: 20px; gap: 16px; }
   .visit-steps { grid-template-columns: 1fr; }
   .insurance-grid { grid-template-columns: 1fr; }
   .ft-chevron { display: inline-block !important; }
