@@ -36,8 +36,8 @@ export default function Nav() {
           ))}
           <a href="tel:8437973960" className="btn btn-p" style={{ padding: "11px 28px", fontSize: 11 }}>(843) 797-3960</a>
         </div>
-        <button className="m-tog" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? "Close menu" : "Open menu"} aria-expanded={menuOpen} style={{ display: "none", flexDirection: "column", gap: 5, background: "none", border: "none", cursor: "pointer", padding: 12 }}>
-          {[0,1,2].map(i => <span key={i} style={{ width: 22, height: 1.5, background: "var(--teal)", borderRadius: 2, transition: "all .3s", transform: menuOpen ? (i===0?"rotate(45deg) translate(4.5px,4.5px)":i===2?"rotate(-45deg) translate(4.5px,-4.5px)":"scaleX(0)") : "none", opacity: menuOpen&&i===1?0:1 }} />)}
+        <button className="m-tog" onClick={() => setMenuOpen(true)} aria-label="Open menu" style={{ display: "none", flexDirection: "column", gap: 5, background: "none", border: "none", cursor: "pointer", padding: 12, visibility: menuOpen ? "hidden" : "visible" }}>
+          {[0,1,2].map(i => <span key={i} style={{ width: 22, height: 1.5, background: "var(--teal)", borderRadius: 2 }} />)}
         </button>
       </nav>
 
