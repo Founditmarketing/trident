@@ -11,7 +11,7 @@ const VALUES = [
 ];
 
 const MILESTONES = [
-  { year: "2004", event: "Trident Dermatology founded in North Charleston by Dr. Bradley J. Saylors" },
+  { year: "2004", event: "Trident Dermatology established in North Charleston, South Carolina" },
   { year: "2008", event: "Expanded to five board-certified dermatologists" },
   { year: "2012", event: "Launched Mohs Micrographic Surgery program" },
   { year: "2018", event: "Recognized as Charleston's Choice for Best Dermatologist" },

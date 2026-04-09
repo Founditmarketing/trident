@@ -116,7 +116,7 @@ export default function MohsSurgery() {
               Bradley J. Saylors, <em style={{ fontStyle: "italic", color: "var(--gold)" }}>MD</em>
             </h2>
             <p style={{ fontSize: 16, lineHeight: 1.85, color: "var(--stone)", fontWeight: 300, marginBottom: 16, maxWidth: 500 }}>
-              Dr. Saylors is the founder of Trident Dermatology and a fellowship-trained Mohs micrographic surgeon. A graduate of the College of Charleston and the Medical University of South Carolina (MUSC), he has been performing Mohs surgery in the Lowcountry for over two decades.
+              Dr. Saylors is a board-certified dermatologist and fellowship-trained Mohs micrographic surgeon. A graduate of the College of Charleston and the Medical University of South Carolina (MUSC), he has been performing Mohs surgery in the Lowcountry for over two decades.
             </p>
             <p style={{ fontSize: 16, lineHeight: 1.85, color: "var(--stone)", fontWeight: 300, marginBottom: 24, maxWidth: 500 }}>
               His specialized training in Mohs surgery and reconstructive techniques ensures that patients receive the most precise, tissue-sparing treatment with optimal cosmetic outcomes.
