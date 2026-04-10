@@ -1,15 +1,15 @@
 export const DOCS = [
-  { name: "Bradley J. Saylors", cred: "MD", focus: "Medical & Surgical Dermatology", init: "BS", featured: true, img: "/images/providers/bradley-saylors.webp", bio: "Board-certified dermatologist and fellowship-trained Mohs surgeon. Graduate of the College of Charleston and MUSC." },
+  { name: "Bradley J. Saylors", cred: "MD", focus: "Mohs Micrographic Surgery", init: "BS", featured: true, img: "/images/providers/bradley-saylors.webp", bio: "Board-certified dermatologist and fellowship-trained Mohs surgeon. Graduate of the College of Charleston and MUSC." },
   { name: "John Maize, Jr.", cred: "MD", focus: "Dermatopathology", init: "JM", img: "/images/providers/john-maize.webp", bio: "Board-certified in dermatology and dermatopathology. Affiliate Associate Professor at MUSC." },
   { name: "Edward George Butler II", cred: "MD", focus: "General & Cosmetic Dermatology", init: "EB", img: "/images/providers/edward-butler.webp", bio: "U.S. Naval Academy graduate. Fellow of AAD and American Society of Dermatologic Surgery." },
   { name: "David B. Duff", cred: "MD", focus: "Medical Dermatology", init: "DD", img: "/images/providers/david-duff.webp", bio: "Board-certified dermatologist, Alpha Omega Alpha honor society inductee. Residency at MUSC." },
-  { name: "Alex M. Drohan", cred: "MD", focus: "Mohs Micrographic Surgery", init: "AD", img: "/images/providers/alex-drohan.webp", bio: "Charleston native, Clemson graduate. Summa Cum Laude. Completed residency at MUSC." },
+  { name: "Alex M. Drohan", cred: "MD", focus: "Medical Dermatology", init: "AD", img: "/images/providers/alex-drohan.webp", bio: "Charleston native, Clemson graduate. Summa Cum Laude. Completed residency at MUSC." },
 ];
 
 export const PAS = [
-  { name: "Michael Overcash", cred: "MPAS, PA-C", init: "MO", img: "/images/providers/michael-overcash.webp", bio: "Named SC PA of the Year 2009. SDPA Diplomate. Charleston's Choice Best Dermatologist 2018." },
-  { name: "Kalley Veit", cred: "MMS, PA-C", init: "KV", img: "/images/providers/kalley-veit.webp", bio: "NCCPA board-certified PA. Pi Alpha Honor Society. Diplomate Fellow of SDPA." },
-  { name: "Destiney Malpass", cred: "MPAS, PA-C", init: "DM", img: "/images/providers/destiney-malpass.webp", bio: "MUSC graduate. Focuses on surgical dermatology and Mohs Surgery collaboration." },
+  { name: "Michael Overcash", cred: "PA", init: "MO", img: "/images/providers/michael-overcash.webp", bio: "Named SC PA of the Year 2009. SDPA Diplomate. Charleston's Choice Best Dermatologist 2018." },
+  { name: "Kalley Veit", cred: "PA", init: "KV", img: "/images/providers/kalley-veit.webp", bio: "NCCPA board-certified PA. Pi Alpha Honor Society. Diplomate Fellow of SDPA." },
+  { name: "Destiney Malpass", cred: "PA", init: "DM", img: "/images/providers/destiney-malpass.webp", bio: "MUSC graduate. Focuses on surgical dermatology and Mohs Surgery collaboration." },
 ];
 
 export const REVIEWS = [
