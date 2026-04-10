@@ -2,11 +2,9 @@ import { useEffect } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
-import { useScroll } from "./hooks";
 
 export default function Layout() {
   const location = useLocation();
-  const sy = useScroll();
 
   // Scroll to top on route change
   useEffect(() => {
@@ -22,12 +20,6 @@ export default function Layout() {
         <Outlet />
       </main>
       <Footer />
-
-      {/* Sticky mobile CTA */}
-      {sy > 500 && <div className="sticky-mobile-cta">
-        <a href="tel:8437973960" className="btn btn-p" style={{ padding: "12px 24px", fontSize: 11, flex: 1, maxWidth: 180, textAlign: "center", justifyContent: "center" }}>Call Now</a>
-        <a href="https://tridentdermatology.ema.md/ema/Login.action" className="btn btn-o" style={{ padding: "12px 24px", fontSize: 11, flex: 1, maxWidth: 180, textAlign: "center", justifyContent: "center" }}>Portal</a>
-      </div>}
     </div>
   );
 }
