@@ -1,5 +1,5 @@
 export const DOCS = [
-  { name: "Bradley J. Saylors", cred: "MD", focus: "Mohs Micrographic Surgery", init: "BS", featured: true, img: "/images/providers/bradley-saylors.webp", bio: "Board-certified dermatologist and fellowship-trained Mohs surgeon. Graduate of the College of Charleston and MUSC." },
+  { name: "Bradley J. Saylors", cred: "MD", focus: "Mohs Micrographic Surgery", init: "BS", featured: true, img: "/images/providers/bradley-saylors.webp", imgPos: "center", bio: "Board-certified dermatologist and fellowship-trained Mohs surgeon. Graduate of the College of Charleston and MUSC." },
   { name: "John Maize, Jr.", cred: "MD", focus: "Dermatopathology", init: "JM", img: "/images/providers/john-maize.webp", bio: "Board-certified in dermatology and dermatopathology. Affiliate Associate Professor at MUSC." },
   { name: "Edward George Butler II", cred: "MD", focus: "General & Cosmetic Dermatology", init: "EB", img: "/images/providers/edward-butler.webp", bio: "U.S. Naval Academy graduate. Fellow of AAD and American Society of Dermatologic Surgery." },
   { name: "David B. Duff", cred: "MD", focus: "Medical Dermatology", init: "DD", img: "/images/providers/david-duff.webp", bio: "Board-certified dermatologist, Alpha Omega Alpha honor society inductee. Residency at MUSC." },

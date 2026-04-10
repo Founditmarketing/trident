@@ -30,7 +30,7 @@ export default function Providers() {
           {DOCS.map((p, i) => (
             <div key={i} className="provider-card" style={{ opacity: prVis?1:0.01, transform: prVis?"none":"translateY(20px)", transition: `all .6s cubic-bezier(.16,1,.3,1) ${i*.08}s` }}>
               <div className="provider-card__photo">
-                <img src={p.img} alt={p.name} loading="lazy" />
+                <img src={p.img} alt={p.name} loading="lazy" style={p.imgPos ? { objectPosition: p.imgPos } : undefined} />
                 {p.featured && <div className="provider-card__badge">
                   <svg width="10" height="10" viewBox="0 0 24 24" fill="white"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                 </div>}
