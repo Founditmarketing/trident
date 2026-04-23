@@ -9,6 +9,7 @@ import MohsSurgery from './pages/MohsSurgery'
 import Providers from './pages/Providers'
 import PatientInfo from './pages/PatientInfo'
 import Contact from './pages/Contact'
+import Privacy from './pages/Privacy'
 import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -23,6 +24,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route path="/providers" element={<Providers />} />
           <Route path="/patients" element={<PatientInfo />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/privacy" element={<Privacy />} />
         </Route>
       </Routes>
     </BrowserRouter>

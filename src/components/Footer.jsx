@@ -64,7 +64,11 @@ export default function Footer() {
         <div style={{ borderTop: "1px solid rgba(255,255,255,.05)", paddingTop: 32, display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 16 }}>
           <div style={{ fontSize: 11, fontWeight: 300, opacity: .35 }}>© {new Date().getFullYear()} Trident Dermatology. All rights reserved.</div>
           <div style={{ display: "flex", gap: 28 }}>
-            {["Privacy","Disclaimer","Accessibility"].map((s,i) => <span key={i} className="ft-legal">{s}</span>)}
+            {[
+              { label: "Privacy", to: "/privacy" },
+              { label: "Disclaimer", to: "/privacy" },
+              { label: "Accessibility", to: "/privacy" },
+            ].map((s, i) => <Link key={i} to={s.to} className="ft-legal">{s.label}</Link>)}
           </div>
         </div>
       </div>
