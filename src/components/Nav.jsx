@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import { TridentLogo } from "./Icons";
 import { useScroll } from "../hooks";
 
 export default function Nav() {
@@ -24,7 +23,7 @@ export default function Nav() {
     <>
       <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: menuOpen ? 1010 : 100, height: 76, padding: "0 clamp(20px,5vw,72px)", display: "flex", alignItems: "center", justifyContent: "space-between", background: menuOpen ? "transparent" : (navOp > .05 ? `var(--nav-bg-solid)` : `var(--nav-bg)`), backdropFilter: menuOpen ? "none" : (navOp > .05 ? `blur(${navOp * 28}px) saturate(1.4)` : "none"), borderBottom: menuOpen ? "none" : (navOp > .05 ? `1px solid var(--nav-border)` : "1px solid transparent") }}>
         <Link to="/" onClick={() => setMenuOpen(false)} style={{ display: "flex", alignItems: "center", gap: 14, textDecoration: "none" }}>
-          <TridentLogo />
+          <img src="/images/td-logo.png" alt="Trident Dermatology" style={{ height: 42, width: 'auto', filter: 'brightness(0) saturate(100%)', opacity: 0.82 }} />
           <div>
             <div style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: 18, fontWeight: 600, color: "var(--teal)", lineHeight: 1 }}>Trident</div>
             <div style={{ fontSize: 7.5, letterSpacing: 4.5, textTransform: "uppercase", color: "var(--stone)", fontWeight: 500, marginTop: 2 }}>Dermatology</div>

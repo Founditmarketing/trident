@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { TridentLogo } from "./Icons";
+
 
 export default function Footer() {
   const [ftOpen, setFtOpen] = useState(null);
@@ -11,7 +11,7 @@ export default function Footer() {
         <div className="ft-grid" style={{ display: "grid", gridTemplateColumns: "2.2fr 1fr 1fr 1fr", gap: "clamp(24px,4vw,56px)", marginBottom: 64 }}>
           <div>
             <Link to="/" style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 20, color: "white", textDecoration: "none" }}>
-              <TridentLogo color="white" height={26} />
+              <img src="/images/td-logo.png" alt="Trident Dermatology" style={{ height: 32, width: 'auto' }} />
               <div><div style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: 20, fontWeight: 600 }}>Trident</div><div style={{ fontSize: 7, letterSpacing: 4, textTransform: "uppercase", opacity: .35, marginTop: 1 }}>Dermatology</div></div>
             </Link>
             <p style={{ fontSize: 14, lineHeight: 1.75, maxWidth: 280, fontWeight: 300, marginBottom: 24 }}>Comprehensive dermatology for the Lowcountry — clinical excellence meets compassionate care.</p>

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import GradientMesh from "../components/GradientMesh";
-import { AnimatedTrident, TridentLogo, StarIcon } from "../components/Icons";
+import { AnimatedTrident, StarIcon } from "../components/Icons";
 import { useReveal, useCountUp } from "../hooks";
 import { REVIEWS } from "../data";
 

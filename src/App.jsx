@@ -1,7 +1,7 @@
 import { useState, useCallback, useEffect } from "react";
 import { useScroll, useReveal, useCountUp } from "./hooks";
 import { DOCS, PAS, REVIEWS, FAQS } from "./data";
-import { GradientMesh, AnimatedTrident, TridentLogo, StarIcon, FaqItem, ServicePanel } from "./components";
+import { GradientMesh, AnimatedTrident, StarIcon, FaqItem, ServicePanel } from "./components";
 
 export default function App() {
   const sy = useScroll();
@@ -41,7 +41,7 @@ export default function App() {
       {/* ═══ NAV ═══ */}
       <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 100, height: 76, padding: "0 clamp(20px,5vw,72px)", display: "flex", alignItems: "center", justifyContent: "space-between", background: navOp > .05 ? `var(--nav-bg-solid)` : `var(--nav-bg)`, backdropFilter: navOp > .05 ? `blur(${navOp * 28}px) saturate(1.4)` : "none", borderBottom: navOp > .05 ? `1px solid var(--nav-border)` : "1px solid transparent" }}>
         <div onClick={() => go("hero")} style={{ display: "flex", alignItems: "center", gap: 14, cursor: "pointer" }}>
-          <TridentLogo />
+          <img src="/images/td-logo.png" alt="Trident Dermatology" style={{ height: 42, width: 'auto', filter: 'brightness(0) saturate(100%)', opacity: 0.82 }} />
           <div>
             <div style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: 18, fontWeight: 600, color: "var(--teal)", lineHeight: 1 }}>Trident</div>
             <div style={{ fontSize: 7.5, letterSpacing: 4.5, textTransform: "uppercase", color: "var(--stone)", fontWeight: 500, marginTop: 2 }}>Dermatology</div>
@@ -356,7 +356,7 @@ export default function App() {
           <div className="ft-grid" style={{ display: "grid", gridTemplateColumns: "2.2fr 1fr 1fr 1fr", gap: "clamp(24px,4vw,56px)", marginBottom: 64 }}>
             <div>
               <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 20, color: "white" }}>
-                <TridentLogo color="white" height={26} />
+                <img src="/images/td-logo.png" alt="Trident Dermatology" style={{ height: 32, width: 'auto' }} />
                 <div><div style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: 20, fontWeight: 600 }}>Trident</div><div style={{ fontSize: 7, letterSpacing: 4, textTransform: "uppercase", opacity: .35, marginTop: 1 }}>Dermatology</div></div>
               </div>
               <p style={{ fontSize: 14, lineHeight: 1.75, maxWidth: 280, fontWeight: 300, marginBottom: 24 }}>Comprehensive dermatology for the Lowcountry — clinical excellence meets compassionate care.</p>
