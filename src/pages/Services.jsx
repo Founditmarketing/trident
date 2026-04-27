@@ -28,7 +28,7 @@ export default function Services() {
       {/* ═══ SERVICE PANELS ═══ */}
       <section ref={svcRef} aria-label="Our services" style={{ padding: "var(--section-pad) clamp(20px,5vw,72px) 40px", maxWidth: 1440, margin: "0 auto" }}>
         <ServicePanel num="01" title="Medical Dermatology" align="left" vis={svcVis} delay={0.1} dark image="/images/svc-medical.png" video="/svc-medical.mp4" desc="Comprehensive diagnosis and treatment of conditions affecting the skin, hair, and nails — from acne and eczema to complex autoimmune disorders." items={["Acne & Rosacea","Psoriasis & Eczema","Skin Cancer Screening","Mole Evaluation","Hair & Nail Disorders"]} />
-        <ServicePanel num="02" title="Cosmetic Dermatology" align="right" vis={svcVis} delay={0.25} image="/images/svc-cosmetic.png" video="/svc-cosmetic.mp4" desc="Refined aesthetic treatments that enhance your natural beauty with precision, subtlety, and clinical artistry." items={["Botox & Dysport","Dermal Fillers","Chemical Peels","Laser Treatments","Microneedling"]} />
+        <ServicePanel num="02" title="Cosmetic Dermatology" align="right" vis={svcVis} delay={0.25} image="/images/svc-cosmetic.png" video="/svc-cosmetic.mp4" desc="Refined aesthetic treatments that enhance your natural beauty with precision, subtlety, and clinical artistry." items={["Botox & Dysport","Dermal Fillers","Laser Treatments","Microneedling"]} />
         <ServicePanel num="03" title="Mohs Micrographic Surgery" align="left" vis={svcVis} delay={0.4} dark image="/images/svc-mohs.png" video="/svc-mohs.mp4" desc="The gold standard in skin cancer removal — tissue-sparing precision with the highest cure rates in modern dermatologic surgery." items={["Skin Cancer Removal","Tissue-Sparing Technique","Same-Day Results","Reconstructive Options","99% Cure Rate"]} />
         <div style={{ textAlign: "center", marginTop: 20 }}>
           <Link to="/services/mohs-surgery" className="btn btn-o">Learn More About Mohs Surgery →</Link>
@@ -60,7 +60,7 @@ export default function Services() {
               Insurance & <em style={{ fontStyle: "italic", color: "var(--gold)" }}>Payment</em>
             </h3>
             <p style={{ fontSize: 15, lineHeight: 1.75, color: "var(--stone)", fontWeight: 300, maxWidth: 480 }}>
-              We accept most major insurance plans including Medicare, Blue Cross Blue Shield, Cigna, Aetna, United Healthcare, and Tricare. Cosmetic consultations are complimentary.
+              We accept most major insurance plans including Medicare, Blue Cross Blue Shield, Cigna, Aetna, United Healthcare, and Tricare. Cosmetic consultations are available for a $75 fee.
             </p>
           </div>
           <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>

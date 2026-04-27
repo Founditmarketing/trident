@@ -31,7 +31,7 @@ export default function Home() {
             <h1 className="display" style={{ fontSize: "clamp(46px,7vw,96px)", marginBottom: 12 }}>
               <span style={{ display: "block", animation: "textUp 1s ease .4s both" }}>The Art &</span>
               <span style={{ display: "block", animation: "textUp 1s ease .55s both" }}>Science of</span>
-              <span style={{ display: "block", fontStyle: "italic", fontWeight: 400, background: "linear-gradient(135deg, #8B6F4E 0%, var(--gold) 40%, #8B6F4E 80%)", backgroundSize: "200% 100%", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", animation: "textUp 1s ease .7s both" }}>Beautiful Skin</span>
+              <span style={{ display: "block", fontStyle: "italic", fontWeight: 400, color: "var(--teal)", animation: "textUp 1s ease .7s both" }}>Beautiful Skin</span>
             </h1>
             <div style={{ display: "flex", alignItems: "center", gap: 16, margin: "28px 0 16px", animation: "textUp 1s ease .85s both" }}>
               <div style={{ width: 72, height: 1.5, background: "linear-gradient(90deg, var(--gold), transparent)", transformOrigin: "left", animation: "lineDraw .8s ease 1.2s both" }} />

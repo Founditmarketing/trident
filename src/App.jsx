@@ -91,7 +91,7 @@ export default function App() {
             <h1 className="display" style={{ fontSize: "clamp(46px,7vw,96px)", marginBottom: 12 }}>
               <span style={{ display: "block", animation: "textUp 1s ease .4s both" }}>The Art &</span>
               <span style={{ display: "block", animation: "textUp 1s ease .55s both" }}>Science of</span>
-              <span style={{ display: "block", fontStyle: "italic", fontWeight: 400, background: "linear-gradient(135deg, #8B6F4E 0%, var(--gold) 40%, #8B6F4E 80%)", backgroundSize: "200% 100%", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", animation: "textUp 1s ease .7s both" }}>Beautiful Skin</span>
+              <span style={{ display: "block", fontStyle: "italic", fontWeight: 400, color: "var(--teal)", animation: "textUp 1s ease .7s both" }}>Beautiful Skin</span>
             </h1>
             <div style={{ display: "flex", alignItems: "center", gap: 16, margin: "28px 0 16px", animation: "textUp 1s ease .85s both" }}>
               <div style={{ width: 72, height: 1.5, background: "linear-gradient(90deg, var(--gold), transparent)", transformOrigin: "left", animation: "lineDraw .8s ease 1.2s both" }} />
@@ -196,7 +196,7 @@ export default function App() {
           <h2 className="display" style={{ fontSize: "clamp(36px,5vw,60px)", marginBottom: 16 }}>Three Pillars of <em style={{ fontStyle: "italic", color: "var(--gold)" }}>Exceptional</em> Care</h2>
         </div>
         <ServicePanel num="01" title="Medical Dermatology" align="left" vis={svcVis} delay={0.1} dark image="/images/svc-medical.png" video="/svc-medical.mp4" desc="Comprehensive diagnosis and treatment of conditions affecting the skin, hair, and nails — from acne and eczema to complex autoimmune disorders." items={["Acne & Rosacea","Psoriasis & Eczema","Skin Cancer Screening","Mole Evaluation","Hair & Nail Disorders"]} />
-        <ServicePanel num="02" title="Cosmetic Dermatology" align="right" vis={svcVis} delay={0.25} image="/images/svc-cosmetic.png" video="/svc-cosmetic.mp4" desc="Refined aesthetic treatments that enhance your natural beauty with precision, subtlety, and clinical artistry." items={["Botox & Dysport","Dermal Fillers","Chemical Peels","Laser Treatments","Microneedling"]} />
+        <ServicePanel num="02" title="Cosmetic Dermatology" align="right" vis={svcVis} delay={0.25} image="/images/svc-cosmetic.png" video="/svc-cosmetic.mp4" desc="Refined aesthetic treatments that enhance your natural beauty with precision, subtlety, and clinical artistry." items={["Botox & Dysport","Dermal Fillers","Laser Treatments","Microneedling"]} />
         <ServicePanel num="03" title="Mohs Micrographic Surgery" align="left" vis={svcVis} delay={0.4} dark image="/images/svc-mohs.png" video="/svc-mohs.mp4" desc="The gold standard in skin cancer removal — tissue-sparing precision with the highest cure rates in modern dermatologic surgery." items={["Skin Cancer Removal","Tissue-Sparing Technique","Same-Day Results","Reconstructive Options","99% Cure Rate"]} />
       </section>
 
